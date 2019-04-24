@@ -1,8 +1,28 @@
 [tool.poetry]
 name = "spoffy"
-version = "0.2.0"
+version = "0.2.1"
 description = "Spotify API client with async and sync support"
 authors = ["Steinthor Palsson <steini90@gmail.com>"]
+readme = 'README.md'
+license = 'Apache-2.0'
+homepage = 'https://github.com/steinitzu/spoffy'
+repository = 'https://github.com/steinitzu/spoffy'
+documentation = 'https://spoffy.readthedocs.io'
+
+keywords = [
+  'spotify',
+  'api-client',
+  'async',
+  'sans-io',
+]
+
+classifiers = [
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.6",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
 
 [tool.poetry.dependencies]
 python = "^3.6"
