@@ -1,4 +1,4 @@
-from spoffy.client.base import AsyncClient, SyncClient, ClientCommon
+from spoffy.client.base import AsyncClient, SyncClient
 
 from spoffy.modules.modules import (
     Auth,
@@ -39,7 +39,7 @@ class AsyncSpotify:
     :vartype ~Spotify.search: :py:class:`~spoffy.modules.modules.AsyncSearch`
     :ivar ~Spotify.player: Access to player endpoints
     :vartype ~Spotify.player: :py:class:`~spoffy.modules.modules.AsyncPlayer`
-    """
+    """  # noqa
 
     def __init__(self, client: AsyncClient) -> None:
         """

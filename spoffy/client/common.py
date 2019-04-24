@@ -1,7 +1,6 @@
 from typing import Optional, Union, MutableMapping
 
 from cattr import Converter
-from urlobject import URLObject
 
 from spoffy.models import Token
 from spoffy.sansio import Response
@@ -112,7 +111,7 @@ class ClientCommon:
     def load(self, response: Response, target):
         """
         Load a response data to a ``SpotifyObject`` object
-        
+
         :param response: The response to load
         :param target: The target class
         """
