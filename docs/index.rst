@@ -88,7 +88,7 @@ Note: Spoffy does not have dependencies on any http client libraries, so you mus
 Use with requests
 -----------------
 
-.. code-block::
+.. code-block:: bash
 
    pip install requests
 
@@ -97,7 +97,7 @@ Use with requests
 
 Use with AIOHTTP
 ----------------
-.. code-block::
+.. code-block:: bash
 
    pip install aiohttp
 
@@ -166,7 +166,7 @@ If you have a :py:class:`~spoffy.models.UserToken` object from a previous sessio
 Install
 =======
 
-.. code-block::
+.. code-block:: bash
 
    pip install spoffy
 
