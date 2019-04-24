@@ -15,6 +15,8 @@ from spoffy.modules.modules import (
     AsyncPlaylists,
     Search,
     AsyncSearch,
+    Library,
+    AsyncLibrary,
 )
 
 
@@ -43,6 +45,8 @@ class AsyncSpotify:
     :vartype ~Spotify.search: :py:class:`~spoffy.modules.modules.AsyncSearch`
     :ivar ~Spotify.player: Access to player endpoints
     :vartype ~Spotify.player: :py:class:`~spoffy.modules.modules.AsyncPlayer`
+    :ivar ~Spotify.library: Access to player endpoints
+    :vartype ~Spotify.library: :py:class:`~spoffy.modules.modules.AsyncLibrary
     """  # noqa
 
     def __init__(self, client: AsyncClient) -> None:
@@ -58,6 +62,7 @@ class AsyncSpotify:
         self.albums = AsyncAlbums(self.client)
         self.playlists = AsyncPlaylists(self.client)
         self.search = AsyncSearch(self.client)
+        self.library = AsyncLibrary(self.client)
 
 
 class SyncSpotify:
@@ -85,6 +90,8 @@ class SyncSpotify:
     :vartype ~Spotify.search: :py:class:`~spoffy.modules.modules.Search`
     :ivar ~Spotify.player: Access to player endpoints
     :vartype ~Spotify.player: :py:class:`~spoffy.modules.modules.Player`
+    :ivar ~Spotify.library: Access to player endpoints
+    :vartype ~Spotify.library: :py:class:`~spoffy.modules.modules.Library`
     """
 
     def __init__(self, client: SyncClient) -> None:
@@ -100,3 +107,4 @@ class SyncSpotify:
         self.albums = Albums(self.client)
         self.playlists = Playlists(self.client)
         self.search = Search(self.client)
+        self.library = Library(self.client)
