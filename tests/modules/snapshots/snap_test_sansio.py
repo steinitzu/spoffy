@@ -7,10 +7,6 @@ from snapshottest import Snapshot
 
 snapshots = Snapshot()
 
-snapshots['test_Albums_get_album 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/albums/abcdefg?market=stringarg', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
-
-snapshots['test_Albums_get_album_tracks 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/albums/abcdefg/tracks?market=stringarg&limit=50&offset=50', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
-
 snapshots['test_Artists_artist 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/artists/abcdefg', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
 
 snapshots['test_Artists_artist_albums 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/artists/abcdefg/albums?include_groups=a%2Cb%2Cc%2Cd%2Ce%2Cf%2Cg&market=abcdefg', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
@@ -61,14 +57,6 @@ snapshots['test_Search_search 1'] = "<Request(method='GET', url='https://api.spo
 
 snapshots['test_Search_tracks 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/search?q=abcdefg&type=track&market=stringarg&limit=50&offset=50&include_external=stringarg', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
 
-snapshots['test_Tracks_get_audio_features 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/audio-features/abcdefg', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
-
-snapshots['test_Tracks_get_many_audio_features 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/audio-features?ids=a%2Cb%2Cc%2Cd%2Ce%2Cf%2Cg', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
-
-snapshots['test_Tracks_get_many_tracks 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/tracks?ids=a%2Cb%2Cc%2Cd%2Ce%2Cf%2Cg&market=stringarg', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
-
-snapshots['test_Tracks_get_track 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/tracks/abcdefg?market=stringarg', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
-
 snapshots['test_Users_me 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/me', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
 
 snapshots['test_Users_user 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/users/abcdefg', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
@@ -76,3 +64,15 @@ snapshots['test_Users_user 1'] = "<Request(method='GET', url='https://api.spotif
 snapshots['test_Library_top_artists 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/me/top/artists?limit=50&offset=50&time_range=stringarg', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
 
 snapshots['test_Library_top_tracks 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/me/top/tracks?limit=50&offset=50&time_range=stringarg', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
+
+snapshots['test_Albums_album 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/albums/abcdefg?market=stringarg', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
+
+snapshots['test_Albums_album_tracks 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/albums/abcdefg/tracks?market=stringarg&limit=50&offset=50', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
+
+snapshots['test_Tracks_audio_features 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/audio-features/abcdefg', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
+
+snapshots['test_Tracks_many_audio_features 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/audio-features?ids=a%2Cb%2Cc%2Cd%2Ce%2Cf%2Cg', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
+
+snapshots['test_Tracks_many_tracks 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/tracks?ids=a%2Cb%2Cc%2Cd%2Ce%2Cf%2Cg&market=stringarg', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
+
+snapshots['test_Tracks_track 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/tracks/abcdefg?market=stringarg', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
