@@ -1,0 +1,5 @@
+* TODO Patch sphinx with this pull https://github.com/sphinx-doc/sphinx/pull/4676/files
+To fix ivar linking to random objects
+This also seems to work https://github.com/sphinx-doc/sphinx/pull/5129
+* TODO DO an example with client credentials
+* TODO Make client credentials easy (spotify.authenticate_client(), spotify.authenticate_user(code)) ?
