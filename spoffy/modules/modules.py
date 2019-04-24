@@ -151,7 +151,7 @@ class AsyncPlaylists(AsyncApiModule):
 class Albums(ApiModule):
     __builder_class__ = builders.Albums
 
-    def get_album(
+    def album(
         self, album_id: str, market: Optional[str] = None
     ) -> models.Album:
         """
@@ -161,10 +161,10 @@ class Albums(ApiModule):
         :param market: ISO2A country to enable relinking
         """
         return self._make_request(
-            self.b.get_album(album_id=album_id, market=market), models.Album
+            self.b.album(album_id=album_id, market=market), models.Album
         )
 
-    def get_album_tracks(
+    def album_tracks(
         self,
         album_id: str,
         market: Optional[str] = None,
@@ -180,7 +180,7 @@ class Albums(ApiModule):
         :param offset: Pagination offset
         """
         return self._make_request(
-            self.b.get_album_tracks(
+            self.b.album_tracks(
                 album_id=album_id, market=market, limit=limit, offset=offset
             ),
             models.AlbumTracksPaging,
@@ -190,7 +190,7 @@ class Albums(ApiModule):
 class AsyncAlbums(AsyncApiModule):
     __builder_class__ = builders.Albums
 
-    async def get_album(
+    async def album(
         self, album_id: str, market: Optional[str] = None
     ) -> models.Album:
         """
@@ -200,10 +200,10 @@ class AsyncAlbums(AsyncApiModule):
         :param market: ISO2A country to enable relinking
         """
         return await self._make_request(
-            self.b.get_album(album_id=album_id, market=market), models.Album
+            self.b.album(album_id=album_id, market=market), models.Album
         )
 
-    async def get_album_tracks(
+    async def album_tracks(
         self,
         album_id: str,
         market: Optional[str] = None,
@@ -219,7 +219,7 @@ class AsyncAlbums(AsyncApiModule):
         :param offset: Pagination offset
         """
         return await self._make_request(
-            self.b.get_album_tracks(
+            self.b.album_tracks(
                 album_id=album_id, market=market, limit=limit, offset=offset
             ),
             models.AlbumTracksPaging,
@@ -229,7 +229,7 @@ class AsyncAlbums(AsyncApiModule):
 class Tracks(ApiModule):
     __builder_class__ = builders.Tracks
 
-    def get_track(
+    def track(
         self, track_id: str, market: Optional[str] = None
     ) -> models.Track:
         """
@@ -239,10 +239,10 @@ class Tracks(ApiModule):
         :param market: ISO2A country to enable track relinking
         """
         return self._make_request(
-            self.b.get_track(track_id=track_id, market=market), models.Track
+            self.b.track(track_id=track_id, market=market), models.Track
         )
 
-    def get_many_tracks(
+    def many_tracks(
         self, track_ids: Sequence[str], market: Optional[str] = None
     ) -> models.TracksCollection:
         """
@@ -252,21 +252,21 @@ class Tracks(ApiModule):
         :param market: ISO2A country to enable track relinking
         """
         return self._make_request(
-            self.b.get_many_tracks(track_ids=track_ids, market=market),
+            self.b.many_tracks(track_ids=track_ids, market=market),
             models.TracksCollection,
         )
 
-    def get_audio_features(self, track_id: str) -> models.AudioFeatures:
+    def audio_features(self, track_id: str) -> models.AudioFeatures:
         """
         Get audio features for a single track
 
         :param track_id: The Spotify track ID to fetch audio features for
         """
         return self._make_request(
-            self.b.get_audio_features(track_id=track_id), models.AudioFeatures
+            self.b.audio_features(track_id=track_id), models.AudioFeatures
         )
 
-    def get_many_audio_features(
+    def many_audio_features(
         self, track_ids: Sequence[str]
     ) -> models.AudioFeaturesCollection:
         """
@@ -275,7 +275,7 @@ class Tracks(ApiModule):
         :param track_ids: List of up to 50 track IDs
         """
         return self._make_request(
-            self.b.get_many_audio_features(track_ids=track_ids),
+            self.b.many_audio_features(track_ids=track_ids),
             models.AudioFeaturesCollection,
         )
 
@@ -283,7 +283,7 @@ class Tracks(ApiModule):
 class AsyncTracks(AsyncApiModule):
     __builder_class__ = builders.Tracks
 
-    async def get_track(
+    async def track(
         self, track_id: str, market: Optional[str] = None
     ) -> models.Track:
         """
@@ -293,10 +293,10 @@ class AsyncTracks(AsyncApiModule):
         :param market: ISO2A country to enable track relinking
         """
         return await self._make_request(
-            self.b.get_track(track_id=track_id, market=market), models.Track
+            self.b.track(track_id=track_id, market=market), models.Track
         )
 
-    async def get_many_tracks(
+    async def many_tracks(
         self, track_ids: Sequence[str], market: Optional[str] = None
     ) -> models.TracksCollection:
         """
@@ -306,21 +306,21 @@ class AsyncTracks(AsyncApiModule):
         :param market: ISO2A country to enable track relinking
         """
         return await self._make_request(
-            self.b.get_many_tracks(track_ids=track_ids, market=market),
+            self.b.many_tracks(track_ids=track_ids, market=market),
             models.TracksCollection,
         )
 
-    async def get_audio_features(self, track_id: str) -> models.AudioFeatures:
+    async def audio_features(self, track_id: str) -> models.AudioFeatures:
         """
         Get audio features for a single track
 
         :param track_id: The Spotify track ID to fetch audio features for
         """
         return await self._make_request(
-            self.b.get_audio_features(track_id=track_id), models.AudioFeatures
+            self.b.audio_features(track_id=track_id), models.AudioFeatures
         )
 
-    async def get_many_audio_features(
+    async def many_audio_features(
         self, track_ids: Sequence[str]
     ) -> models.AudioFeaturesCollection:
         """
@@ -329,7 +329,7 @@ class AsyncTracks(AsyncApiModule):
         :param track_ids: List of up to 50 track IDs
         """
         return await self._make_request(
-            self.b.get_many_audio_features(track_ids=track_ids),
+            self.b.many_audio_features(track_ids=track_ids),
             models.AudioFeaturesCollection,
         )
 

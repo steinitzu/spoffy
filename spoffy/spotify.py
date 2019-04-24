@@ -23,8 +23,12 @@ class AsyncSpotify:
     Async Spotify API wrapper. Wraps the client object
     and exposes the Spotify web API organized into modules.
 
+    Use like so:
+
+    >>> await AsyncSpotify(...).tracks.audio_features('sometrackid')
+
     :ivar ~Spotify.client: The underlying client instance
-    :vartype ~Spotify.client: :py:class:`~AsyncClient`
+    :vartype ~Spotify.client: :class:`AsyncClient`
     :ivar ~Spotify.auth: Authorization methods
     :vartype ~Spotify.auth: :py:class:`~spoffy.modules.modules.AsyncAuth`
     :ivar ~Spotify.albums: Access to album endpoints
@@ -60,6 +64,10 @@ class SyncSpotify:
     """
     Synchronous Spotify API wrapper. Wraps the client object
     and exposes the Spotify web API organized into modules.
+
+    Use like so:
+
+    >>> SyncSpotify(...).tracks.audio_features('sometrackid')
 
     :ivar ~Spotify.client: The underlying client instance
     :vartype ~Spotify.client: :py:class:`~SyncClient`

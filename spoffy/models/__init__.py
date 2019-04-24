@@ -1,8 +1,11 @@
 from spoffy.models.paging import Paging
+from spoffy.models.image import Image
 from spoffy.models.playlists import (
     Playlist,
     PlaylistSimple,
     PlaylistTracksPaging,
+    PlaylistOwner,
+    TracksHref,
 )
 from spoffy.models.core import (
     Artist,
@@ -10,6 +13,7 @@ from spoffy.models.core import (
     Album,
     AlbumTracksPaging,
     ArtistAlbumsPaging,
+    ExternalUrls,
 )
 from spoffy.models.collections import TracksCollection, AudioFeaturesCollection
 from spoffy.models.audiofeatures import AudioFeatures
@@ -53,4 +57,8 @@ __all__ = [
     "UserPrivate",
     "Token",
     "Paging",
+    "Image",
+    "ExternalUrls",
+    "PlaylistOwner",
+    "TracksHref",
 ]

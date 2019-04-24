@@ -98,9 +98,7 @@ class Albums(RequestBuilder):
     """
 
     @returns(models.Album)
-    def get_album(
-        self, album_id: str, market: Optional[str] = None
-    ) -> Request:
+    def album(self, album_id: str, market: Optional[str] = None) -> Request:
         """
         Get a single album
 
@@ -111,7 +109,7 @@ class Albums(RequestBuilder):
         return self.b("GET", "/albums/{}".format(album_id), params=params)
 
     @returns(models.AlbumTracksPaging)
-    def get_album_tracks(
+    def album_tracks(
         self,
         album_id: str,
         market: Optional[str] = None,
@@ -140,9 +138,7 @@ class Tracks(RequestBuilder):
     """
 
     @returns(models.Track)
-    def get_track(
-        self, track_id: str, market: Optional[str] = None
-    ) -> Request:
+    def track(self, track_id: str, market: Optional[str] = None) -> Request:
         """
         Get a single track
 
@@ -153,7 +149,7 @@ class Tracks(RequestBuilder):
         return self.b("GET", "/tracks/{}".format(track_id), params=params)
 
     @returns(models.TracksCollection)
-    def get_many_tracks(
+    def many_tracks(
         self, track_ids: Sequence[str], market: Optional[str] = None
     ) -> Request:
         """
@@ -169,7 +165,7 @@ class Tracks(RequestBuilder):
         )
 
     @returns(models.AudioFeatures)
-    def get_audio_features(self, track_id: str) -> Request:
+    def audio_features(self, track_id: str) -> Request:
         """
         Get audio features for a single track
 
@@ -178,7 +174,7 @@ class Tracks(RequestBuilder):
         return self.b("GET", "/audio-features/{}".format(track_id))
 
     @returns(models.AudioFeaturesCollection)
-    def get_many_audio_features(self, track_ids: Sequence[str]) -> Request:
+    def many_audio_features(self, track_ids: Sequence[str]) -> Request:
         """
         Get audio features for several tracks
 

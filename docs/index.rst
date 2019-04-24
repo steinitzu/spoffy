@@ -10,15 +10,18 @@ Features include:
 
 * Typed response models
 * Async AND sync support
+* Built in support for aiohttp and requests (or bring your own http library)
 * Support for client credentials and OAuth2 authorization flows
 
 Type hints everywhere
 ---------------------
 
-All API json responses are converted to typed python objects.
+All API json responses are unmarshalled to typed python objects. (e.g. :py:class:`~spoffy.models.Playlist`)
 This gives you excellent code completion in your IDE and makes your code less prone to simple mistakes.
 
-This is still a thin API wrapper and the response bodies are not reshaped or restructured in any way. You get exactly the data returned from Spotify.
+
+Spoffy is still a thin API wrapper and the response bodies are not reshaped or restructured in any way. You get exactly the data returned from Spotify.
+Note: Spotify sometimes includes undocumented attributes in responses, these are also included as attributes on the response object but they're not typed or documented.
 
 Sansio
 ------
@@ -30,6 +33,7 @@ The client can be easily implemented to work with any sync or async http client 
 .. _`aiohttp`: https://aiohttp.readthedocs.io/en/stable/
 
 
+
 Quickstart
 ==========
 
@@ -37,16 +41,26 @@ To start using the API you must first create a client ID and client secret by go
 
 Once you have your app set up you can access the public API using client credentials authentication.
 
+Note: Spoffy does not have dependencies on any http client libraries, so you must install your preferred library yourself
+
 Use with requests
 -----------------
 
+.. code-block::
+
+   pip install requests
+
 .. literalinclude:: /../examples/usewithrequests.py
-   :language: python
+   :language: python3
 
 Use with AIOHTTP
 ----------------
+.. code-block::
+
+   pip install aiohttp
+
 .. literalinclude:: /../examples/usewithaiohttp.py
-   :language: python
+   :language: python3
 
 
 Authentication
@@ -120,7 +134,6 @@ Due the use of typehints and async/await keywords, only python3.6 and up are sup
 API Reference
 =============
 
-------------------
 IO Implementations
 ------------------
 
@@ -132,6 +145,7 @@ Requests
    :inherited-members:
    :show-inheritance:
    :undoc-members:
+   :noindex:
 
 AIOhttp
 --------
@@ -141,6 +155,7 @@ AIOhttp
    :inherited-members:
    :show-inheritance:
    :undoc-members:
+   :noindex:
 
 .. module:: spoffy
 
@@ -151,12 +166,11 @@ Sync and async spotify API wrappers that wrap a client instance and expose the s
 
 .. autoclass:: SyncSpotify
    :members:
+   :noindex:
 
 .. autoclass:: AsyncSpotify
    :members:
-
-
-
+   :noindex:
 
 Client base
 -----------
@@ -166,43 +180,170 @@ Client base
    :inherited-members:
    :show-inheritance:
    :undoc-members:
+   :noindex:
 
 .. autoclass:: AsyncClient
    :members:
    :inherited-members:
    :show-inheritance:
    :undoc-members:
+   :noindex:
 
 .. autoclass:: ClientCommon
    :members:
    :undoc-members:
+   :noindex:
 
 Exceptions
 ----------
 
 .. autoexception:: SpotifyException
    :members:
+   :noindex:
 
 .. autoexception:: SpotifyUnauthorized
    :members:
+   :noindex:
 
 .. autoexception:: SpotifyPremiumRequired
    :members:
+   :noindex:
 
-API modules
------------
+Sync API modules
+----------------
 
-.. automodule:: spoffy.modules.modules
+.. module:: spoffy.modules.modules
+
+.. autoclass:: Auth
    :members:
-   :undoc-members:
    :inherited-members:
    :show-inheritance:
-
-.. automodule:: spoffy.modules.apimodule
-   :members:
    :undoc-members:
+   :noindex:
+
+.. autoclass:: Albums
+   :members:
    :inherited-members:
    :show-inheritance:
+   :undoc-members:
+   :noindex:
+
+.. autoclass:: Artists
+   :members:
+   :inherited-members:
+   :show-inheritance:
+   :undoc-members:
+   :noindex:
+
+.. autoclass:: Library
+   :members:
+   :inherited-members:
+   :show-inheritance:
+   :undoc-members:
+   :noindex:
+
+.. autoclass:: Player
+   :members:
+   :inherited-members:
+   :show-inheritance:
+   :undoc-members:
+   :noindex:
+
+.. autoclass:: Playlists
+   :members:
+   :inherited-members:
+   :show-inheritance:
+   :undoc-members:
+   :noindex:
+
+.. autoclass:: Tracks
+   :members:
+   :inherited-members:
+   :show-inheritance:
+   :undoc-members:
+   :noindex:
+
+.. autoclass:: Search
+   :members:
+   :inherited-members:
+   :show-inheritance:
+   :undoc-members:
+   :noindex:
+
+.. autoclass:: Users
+   :members:
+   :inherited-members:
+   :show-inheritance:
+   :undoc-members:
+   :noindex:
+
+
+Async API modules
+-----------------
+
+
+.. autoclass:: AsyncAuth
+   :members:
+   :inherited-members:
+   :show-inheritance:
+   :undoc-members:
+   :noindex:
+
+.. autoclass:: AsyncAlbums
+   :members:
+   :inherited-members:
+   :show-inheritance:
+   :undoc-members:
+   :noindex:
+
+.. autoclass:: AsyncArtists
+   :members:
+   :inherited-members:
+   :show-inheritance:
+   :undoc-members:
+   :noindex:
+
+.. autoclass:: AsyncLibrary
+   :members:
+   :inherited-members:
+   :show-inheritance:
+   :undoc-members:
+   :noindex:
+
+.. autoclass:: AsyncPlayer
+   :members:
+   :inherited-members:
+   :show-inheritance:
+   :undoc-members:
+   :noindex:
+
+.. autoclass:: AsyncPlaylists
+   :members:
+   :inherited-members:
+   :show-inheritance:
+   :undoc-members:
+   :noindex:
+
+.. autoclass:: AsyncTracks
+   :members:
+   :inherited-members:
+   :show-inheritance:
+   :undoc-members:
+   :noindex:
+
+.. autoclass:: AsyncSearch
+   :members:
+   :inherited-members:
+   :show-inheritance:
+   :undoc-members:
+   :noindex:
+
+.. autoclass:: AsyncUsers
+   :members:
+   :inherited-members:
+   :show-inheritance:
+   :undoc-members:
+   :noindex:
 
 
 Object model
@@ -212,80 +353,7 @@ Object model
    :members:
    :undoc-members:
    :inherited-members:
-   :show-inheritance:
-
-.. automodule:: spoffy.models.core
-   :members:
-   :undoc-members:
-   :inherited-members:
-   :show-inheritance:
-
-.. automodule:: spoffy.models.audiofeatures
-   :members:
-   :undoc-members:
-   :inherited-members:
-   :show-inheritance:
-
-.. automodule:: spoffy.models.collections
-   :members:
-   :undoc-members:
-   :inherited-members:
-   :show-inheritance:
-
-.. automodule:: spoffy.models.image
-   :members:
-   :undoc-members:
-   :inherited-members:
-   :show-inheritance:
-
-.. automodule:: spoffy.models.library
-   :members:
-   :undoc-members:
-   :inherited-members:
-   :show-inheritance:
-
-.. automodule:: spoffy.models.paging
-   :members:
-   :undoc-members:
-   :inherited-members:
-   :show-inheritance:
-
-.. automodule:: spoffy.models.personalization
-   :members:
-   :undoc-members:
-   :inherited-members:
-   :show-inheritance:
-
-
-.. automodule:: spoffy.models.player
-   :members:
-   :undoc-members:
-   :inherited-members:
-   :show-inheritance:
-
-.. automodule:: spoffy.models.playlists
-   :members:
-   :undoc-members:
-   :inherited-members:
-   :show-inheritance:
-
-.. automodule:: spoffy.models.search
-   :members:
-   :undoc-members:
-   :inherited-members:
-   :show-inheritance:
-
-.. automodule:: spoffy.models.token
-   :members:
-   :undoc-members:
-   :inherited-members:
-   :show-inheritance:
-
-.. automodule:: spoffy.models.users
-   :members:
-   :undoc-members:
-   :inherited-members:
-   :show-inheritance:
+   :noindex:
 
 
 Indices and tables
