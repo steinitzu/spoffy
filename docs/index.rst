@@ -170,7 +170,7 @@ Install
 
    pip install spoffy
 
-Due the use of typehints and async/await keywords, only python3.6 and up are supported
+Only python3.6 and up are supported
 
 
 API Reference
