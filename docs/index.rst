@@ -21,6 +21,7 @@ This gives you excellent code completion in your IDE and makes your code less pr
 
 
 Spoffy is still a thin API wrapper and the response bodies are not reshaped or restructured in any way. You get exactly the data returned from Spotify.
+
 Note: Spotify sometimes includes undocumented attributes in responses, these are also included as attributes on the response object but they're not typed or documented.
 
 Sansio
@@ -32,6 +33,47 @@ The client can be easily implemented to work with any sync or async http client 
 .. _`requests`: https://2.python-requests.org/en/latest/
 .. _`aiohttp`: https://aiohttp.readthedocs.io/en/stable/
 
+Usage
+=====
+
+The Spotify wrapper comes in two flavours :py:class:`~spoffy.SyncSpotify` to use with a synchronous http library such as requests and :py:class:`~spoffy.AsyncSpotify` to use async/await keywords with an async http library such as aiohttp.
+The wrapper takes in a client as an argument, this is the part that generates http requests and sends them to the spotify api. To implement your own client use the :py:class:`~spoffy.AsyncClient` or :py:class:`~spoffy.SyncClient` as a base respectively, or use the one of the built in clients: :py:class:`~spoffy.io.requests.RequestsClient` or :py:class:`~spoffy.io.aiohttp.AioHttpClient`
+
+This is how you instantiate the spotify wrapper with the requests client:
+
+.. code-block:: python3
+
+   from spoffy import SyncSpotify
+   from spoffy.io.requests import RequestsClient
+
+   spotify = SyncSpotify(RequestsClient(...))
+
+   # Or use the factory function, this is equivalent
+
+   from spoffy.io.requests import make_spotify
+
+   spotify = make_spotify(...)
+
+
+This is how you use it with the aiohttp client:
+
+.. code-block:: python3
+
+   import aiohttp
+   from spoffy import AsyncSpotify
+   from spoffy.io.aiohttp import AioHttpclient
+
+   ...
+
+   async with aiohttp.ClientSession() as session:
+       spotify = SyncSpotify(AioHttpClient(session=session))
+
+   # Or use the factory function, this is equivalent
+
+   from spoffy.io.aiohttp import make_spotify
+
+   async with aiohttp.ClientSession() as session:
+       spotify = make_spotify(session=session)
 
 
 Quickstart
@@ -181,6 +223,8 @@ Client base
    :show-inheritance:
    :undoc-members:
    :noindex:
+
+.. _asynclient-label:
 
 .. autoclass:: AsyncClient
    :members:

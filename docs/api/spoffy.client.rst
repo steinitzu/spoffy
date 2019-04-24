@@ -11,6 +11,7 @@ spoffy.client.base module
     :members:
     :undoc-members:
     :show-inheritance:
+    :inherited-members:
 
 spoffy.client.common module
 ---------------------------
@@ -19,6 +20,7 @@ spoffy.client.common module
     :members:
     :undoc-members:
     :show-inheritance:
+    :inherited-members:
 
 
 Module contents
@@ -28,3 +30,4 @@ Module contents
     :members:
     :undoc-members:
     :show-inheritance:
+    :inherited-members:

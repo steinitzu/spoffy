@@ -21,6 +21,7 @@ spoffy.exceptions module
     :members:
     :undoc-members:
     :show-inheritance:
+    :inherited-members:
 
 spoffy.sansio module
 --------------------
@@ -29,6 +30,7 @@ spoffy.sansio module
     :members:
     :undoc-members:
     :show-inheritance:
+    :inherited-members:
 
 spoffy.spotify module
 ---------------------
@@ -37,6 +39,7 @@ spoffy.spotify module
     :members:
     :undoc-members:
     :show-inheritance:
+    :inherited-members:
 
 
 Module contents
@@ -46,3 +49,4 @@ Module contents
     :members:
     :undoc-members:
     :show-inheritance:
+    :inherited-members:

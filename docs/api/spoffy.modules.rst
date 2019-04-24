@@ -11,6 +11,7 @@ spoffy.modules.apimodule module
     :members:
     :undoc-members:
     :show-inheritance:
+    :inherited-members:
 
 spoffy.modules.mixins module
 ----------------------------
@@ -19,6 +20,7 @@ spoffy.modules.mixins module
     :members:
     :undoc-members:
     :show-inheritance:
+    :inherited-members:
 
 spoffy.modules.modules module
 -----------------------------
@@ -27,6 +29,7 @@ spoffy.modules.modules module
     :members:
     :undoc-members:
     :show-inheritance:
+    :inherited-members:
 
 spoffy.modules.sansio module
 ----------------------------
@@ -35,6 +38,7 @@ spoffy.modules.sansio module
     :members:
     :undoc-members:
     :show-inheritance:
+    :inherited-members:
 
 
 Module contents
@@ -44,3 +48,4 @@ Module contents
     :members:
     :undoc-members:
     :show-inheritance:
+    :inherited-members:

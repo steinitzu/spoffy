@@ -11,6 +11,7 @@ spoffy.io.aiohttp module
     :members:
     :undoc-members:
     :show-inheritance:
+    :inherited-members:
 
 spoffy.io.requests module
 -------------------------
@@ -19,6 +20,7 @@ spoffy.io.requests module
     :members:
     :undoc-members:
     :show-inheritance:
+    :inherited-members:
 
 
 Module contents
@@ -28,3 +30,4 @@ Module contents
     :members:
     :undoc-members:
     :show-inheritance:
+    :inherited-members:
