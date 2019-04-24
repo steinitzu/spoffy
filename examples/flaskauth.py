@@ -32,7 +32,7 @@ def spotify_callback():
     response_code = request.args["code"]
     spotify.auth.authorize_user(response_code)
 
-    top_artists = spotify.library.my_top_artists(
+    top_artists = spotify.library.top_artists(
         limit=1, time_range="long_term"
     ).items
 
