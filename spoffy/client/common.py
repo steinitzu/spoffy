@@ -24,13 +24,15 @@ class ClientCommon:
     :param state: State string for oauth login
     """
 
+    _default_prefix = "https://api.spotify.com/v1"
+
     #: Base authorize url
     authorize_url = "https://accounts.spotify.com/authorize"
     #: Token url for oauth and refresh
     token_url = "https://accounts.spotify.com/api/token"
     #: URL prefix used for all Spotify API calls
     #: This can be changed if using a proxy
-    base_url = "https://api.spotify.com/v1"
+    base_url = _default_prefix
 
     def __init__(
         self,
@@ -74,7 +76,12 @@ class ClientCommon:
             If not provided and no explicit ``Authorization`` header,
             the :py:attr:`~access_token` stored on this instance is used
         """
-        if url.startswith("http://") or url.startswith("https://"):
+        if (
+            url.startswith(self._default_prefix)
+            and self._default_prefix != self.base_url
+        ):
+            url = url.replace(self._default_prefix, self.base_url)
+        elif url.startswith("http://") or url.startswith("https://"):
             pass
         else:
             url = self.base_url + url
