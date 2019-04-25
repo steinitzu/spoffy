@@ -17,6 +17,8 @@ from spoffy.modules.modules import (
     AsyncSearch,
     Library,
     AsyncLibrary,
+    Users,
+    AsyncUsers,
 )
 
 
@@ -29,30 +31,32 @@ class AsyncSpotify:
 
     >>> await AsyncSpotify(...).tracks.audio_features('sometrackid')
 
-    :ivar ~Spotify.client: The underlying client instance
-    :vartype ~Spotify.client: :class:`AsyncClient`
-    :ivar ~Spotify.auth: Authorization methods
-    :vartype ~Spotify.auth: :py:class:`~spoffy.modules.modules.AsyncAuth`
-    :ivar ~Spotify.albums: Access to album endpoints
-    :vartype ~Spotify.albums: :py:class:`~spoffy.modules.modules.AsyncAlbums`
-    :ivar ~Spotify.tracks: Access to track endpoints
-    :vartype ~Spotify.tracks: :py:class:`~spoffy.modules.modules.AsyncTracks`
-    :ivar ~Spotify.playlists: Access to playlist endpoints
-    :vartype ~Spotify.playlists: :py:class:`~spoffy.modules.modules.AsyncPlaylists`
-    :ivar ~Spotify.artists: Access to artist endpoints
-    :vartype ~Spotify.artists: :py:class:`~spoffy.modules.modules.AsyncArtists`
-    :ivar ~Spotify.search: Access to search endpoints
-    :vartype ~Spotify.search: :py:class:`~spoffy.modules.modules.AsyncSearch`
-    :ivar ~Spotify.player: Access to player endpoints
-    :vartype ~Spotify.player: :py:class:`~spoffy.modules.modules.AsyncPlayer`
-    :ivar ~Spotify.library: Access to player endpoints
-    :vartype ~Spotify.library: :py:class:`~spoffy.modules.modules.AsyncLibrary
+    :ivar ~AsyncSpotify.client: The underlying client instance
+    :vartype ~AsyncSpotify.client: :class:`AsyncClient`
+    :ivar ~AsyncSpotify.auth: Authorization methods
+    :vartype ~AsyncSpotify.auth: :py:class:`~spoffy.modules.modules.AsyncAuth`
+    :ivar ~AsyncSpotify.albums: Access to album endpoints
+    :vartype ~AsyncSpotify.albums: :py:class:`~spoffy.modules.modules.AsyncAlbums`
+    :ivar ~AsyncSpotify.tracks: Access to track endpoints
+    :vartype ~AsyncSpotify.tracks: :py:class:`~spoffy.modules.modules.AsyncTracks`
+    :ivar ~AsyncSpotify.playlists: Access to playlist endpoints
+    :vartype ~AsyncSpotify.playlists: :py:class:`~spoffy.modules.modules.AsyncPlaylists`
+    :ivar ~AsyncSpotify.artists: Access to artist endpoints
+    :vartype ~AsyncSpotify.artists: :py:class:`~spoffy.modules.modules.AsyncArtists`
+    :ivar ~AsyncSpotify.search: Access to search endpoints
+    :vartype ~AsyncSpotify.search: :py:class:`~spoffy.modules.modules.AsyncSearch`
+    :ivar ~AsyncSpotify.player: Access to player endpoints
+    :vartype ~AsyncSpotify.player: :py:class:`~spoffy.modules.modules.AsyncPlayer`
+    :ivar ~AsyncSpotify.library: Access to music library endpoints
+    :vartype ~AsyncSpotify.library: :py:class:`~spoffy.modules.modules.AsyncLibrary
+    :ivar ~AsyncSpotify.users: Access to user endpoints
+    :vartype ~AsyncSpotify.users: :py:class:`~spoffy.modules.modules.AsyncUsers
+
+    :param client: An async client instance
+
     """  # noqa
 
     def __init__(self, client: AsyncClient) -> None:
-        """
-        :param client: An async client instance
-        """
         self.client = client
 
         self.artists = AsyncArtists(self.client)
@@ -63,6 +67,7 @@ class AsyncSpotify:
         self.playlists = AsyncPlaylists(self.client)
         self.search = AsyncSearch(self.client)
         self.library = AsyncLibrary(self.client)
+        self.users = AsyncUsers(self.client)
 
 
 class SyncSpotify:
@@ -74,30 +79,32 @@ class SyncSpotify:
 
     >>> SyncSpotify(...).tracks.audio_features('sometrackid')
 
-    :ivar ~Spotify.client: The underlying client instance
-    :vartype ~Spotify.client: :py:class:`~SyncClient`
-    :ivar ~Spotify.auth: Authorization methods
-    :vartype ~Spotify.auth: :py:class:`~spoffy.modules.modules.Auth`
-    :ivar ~Spotify.albums: Access to album endpoints
-    :vartype ~Spotify.albums: :py:class:`~spoffy.modules.modules.Albums`
-    :ivar ~Spotify.tracks: Access to track endpoints
-    :vartype ~Spotify.tracks: :py:class:`~spoffy.modules.modules.Tracks`
-    :ivar ~Spotify.playlists: Access to playlist endpoints
-    :vartype ~Spotify.playlists: :py:class:`~spoffy.modules.modules.Playlists`
-    :ivar ~Spotify.artists: Access to artist endpoints
-    :vartype ~Spotify.artists: :py:class:`~spoffy.modules.modules.Artists`
-    :ivar ~Spotify.search: Access to search endpoints
-    :vartype ~Spotify.search: :py:class:`~spoffy.modules.modules.Search`
-    :ivar ~Spotify.player: Access to player endpoints
-    :vartype ~Spotify.player: :py:class:`~spoffy.modules.modules.Player`
-    :ivar ~Spotify.library: Access to player endpoints
-    :vartype ~Spotify.library: :py:class:`~spoffy.modules.modules.Library`
-    """
+    :ivar ~SyncSpotify.client: The underlying client instance
+    :vartype ~SyncSpotify.client: :py:class:`~SyncClient`
+    :ivar ~SyncSpotify.auth: Authorization methods
+    :vartype ~SyncSpotify.auth: :py:class:`~spoffy.modules.modules.Auth`
+    :ivar ~SyncSpotify.albums: Access to album endpoints
+    :vartype ~SyncSpotify.albums: :py:class:`~spoffy.modules.modules.Albums`
+    :ivar ~SyncSpotify.tracks: Access to track endpoints
+    :vartype ~SyncSpotify.tracks: :py:class:`~spoffy.modules.modules.Tracks`
+    :ivar ~SyncSpotify.playlists: Access to playlist endpoints
+    :vartype ~SyncSpotify.playlists: :py:class:`~spoffy.modules.modules.Playlists`
+    :ivar ~SyncSpotify.artists: Access to artist endpoints
+    :vartype ~SyncSpotify.artists: :py:class:`~spoffy.modules.modules.Artists`
+    :ivar ~SyncSpotify.search: Access to search endpoints
+    :vartype ~SyncSpotify.search: :py:class:`~spoffy.modules.modules.Search`
+    :ivar ~SyncSpotify.player: Access to player endpoints
+    :vartype ~SyncSpotify.player: :py:class:`~spoffy.modules.modules.Player`
+    :ivar ~SyncSpotify.library: Access to music library endpoints
+    :vartype ~SyncSpotify.library: :py:class:`~spoffy.modules.modules.Library`
+    :ivar ~SyncSpotify.users: Access to user endpoints
+    :vartype ~SyncSpotify.users: :py:class:`~spoffy.modules.modules.Users`
+
+    :param client: An sync client instance
+
+    """  # noqa
 
     def __init__(self, client: SyncClient) -> None:
-        """
-        :param client: An sync client instance
-        """
         self.client = client
 
         self.artists = Artists(self.client)
@@ -108,3 +115,4 @@ class SyncSpotify:
         self.playlists = Playlists(self.client)
         self.search = Search(self.client)
         self.library = Library(self.client)
+        self.users = Users(self.client)
