@@ -111,6 +111,47 @@ class Playlists(ApiModule):
             models.PlaylistTracksPaging,
         )
 
+    def create_playlist(
+        self,
+        user_id: str,
+        name: str,
+        public: Optional[bool] = None,
+        collaborative: Optional[bool] = None,
+        description: Optional[str] = None,
+    ) -> models.Playlist:
+        """
+        Create a playlist on a user's account
+
+        :param user_id: ID of the user account
+        :param name: The playlist name
+        :param public: Whether the playlist should be public
+        :param collaborative: Whether the playlist should be collaborative
+        :param description: Playlist description, shown in Spotify clients
+        """
+        return self._make_request(
+            self.b.create_playlist(
+                user_id=user_id,
+                name=name,
+                public=public,
+                collaborative=collaborative,
+                description=description,
+            ),
+            models.Playlist,
+        )
+
+    def add_tracks_to_playlist(
+        self,
+        playlist_id: str,
+        uris: Sequence[str],
+        position: Optional[int] = None,
+    ) -> models.PlaylistSnapshotId:
+        return self._make_request(
+            self.b.add_tracks_to_playlist(
+                playlist_id=playlist_id, uris=uris, position=position
+            ),
+            models.PlaylistSnapshotId,
+        )
+
 
 class AsyncPlaylists(AsyncApiModule):
     __builder_class__ = builders.Playlists
@@ -145,6 +186,47 @@ class AsyncPlaylists(AsyncApiModule):
                 offset=offset,
             ),
             models.PlaylistTracksPaging,
+        )
+
+    async def create_playlist(
+        self,
+        user_id: str,
+        name: str,
+        public: Optional[bool] = None,
+        collaborative: Optional[bool] = None,
+        description: Optional[str] = None,
+    ) -> models.Playlist:
+        """
+        Create a playlist on a user's account
+
+        :param user_id: ID of the user account
+        :param name: The playlist name
+        :param public: Whether the playlist should be public
+        :param collaborative: Whether the playlist should be collaborative
+        :param description: Playlist description, shown in Spotify clients
+        """
+        return await self._make_request(
+            self.b.create_playlist(
+                user_id=user_id,
+                name=name,
+                public=public,
+                collaborative=collaborative,
+                description=description,
+            ),
+            models.Playlist,
+        )
+
+    async def add_tracks_to_playlist(
+        self,
+        playlist_id: str,
+        uris: Sequence[str],
+        position: Optional[int] = None,
+    ) -> models.PlaylistSnapshotId:
+        return await self._make_request(
+            self.b.add_tracks_to_playlist(
+                playlist_id=playlist_id, uris=uris, position=position
+            ),
+            models.PlaylistSnapshotId,
         )
 
 

@@ -5,6 +5,7 @@ from spoffy.models.playlists import (
     PlaylistSimple,
     PlaylistTracksPaging,
     PlaylistOwner,
+    PlaylistSnapshotId,
     TracksHref,
 )
 from spoffy.models.core import (
@@ -61,4 +62,5 @@ __all__ = [
     "ExternalUrls",
     "PlaylistOwner",
     "TracksHref",
+    "PlaylistSnapshotId",
 ]

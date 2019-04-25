@@ -89,6 +89,50 @@ class Playlists(RequestBuilder):
             ),
         )
 
+    @returns(models.Playlist)
+    def create_playlist(
+        self,
+        user_id: str,
+        name: str,
+        public: Optional[bool] = None,
+        collaborative: Optional[bool] = None,
+        description: Optional[str] = None,
+    ) -> Request:
+        """
+        Create a playlist on a user's account
+
+        :param user_id: ID of the user account
+        :param name: The playlist name
+        :param public: Whether the playlist should be public
+        :param collaborative: Whether the playlist should be collaborative
+        :param description: Playlist description, shown in Spotify clients
+        """
+        return self.b(
+            "POST",
+            "/users/{}/playlists".format(user_id),
+            body=_clear_nones(
+                dict(
+                    name=name,
+                    public=public,
+                    collaborative=collaborative,
+                    description=description,
+                )
+            ),
+        )
+
+    @returns(models.PlaylistSnapshotId)
+    def add_tracks_to_playlist(
+        self,
+        playlist_id: str,
+        uris: Sequence[str],
+        position: Optional[int] = None,
+    ) -> Request:
+        return self.b(
+            "POST",
+            "/playlists/{}/tracks".format(playlist_id),
+            body=_clear_nones(dict(uris=uris, position=position)),
+        )
+
 
 class Albums(RequestBuilder):
     """

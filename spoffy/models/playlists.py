@@ -7,6 +7,10 @@ from spoffy.models.paging import OffsetPaging
 from spoffy.models.base import SpotifyObject
 
 
+class PlaylistSnapshotId(SpotifyObject):
+    snapshot_id: str
+
+
 class PlaylistOwner(UserBase):
     display_name: str
 
