@@ -1,4 +1,7 @@
+from typing import TypeVar
+
 from spoffy.client.base import AsyncClient, SyncClient
+from spoffy.util import get_page_url
 
 from spoffy.modules.modules import (
     Auth,
@@ -22,6 +25,9 @@ from spoffy.modules.modules import (
     Follow,
     AsyncFollow,
 )
+
+
+TPage = TypeVar("TPage")
 
 
 class AsyncSpotify:
@@ -50,11 +56,11 @@ class AsyncSpotify:
     :ivar ~AsyncSpotify.player: Access to player endpoints
     :vartype ~AsyncSpotify.player: :py:class:`~spoffy.modules.modules.AsyncPlayer`
     :ivar ~AsyncSpotify.library: Access to music library endpoints
-    :vartype ~AsyncSpotify.library: :py:class:`~spoffy.modules.modules.AsyncLibrary
+    :vartype ~AsyncSpotify.library: :py:class:`~spoffy.modules.modules.AsyncLibrary`
     :ivar ~AsyncSpotify.users: Access to user endpoints
-    :vartype ~AsyncSpotify.users: :py:class:`~spoffy.modules.modules.AsyncUsers
+    :vartype ~AsyncSpotify.users: :py:class:`~spoffy.modules.modules.AsyncUsers`
     :ivar ~AsyncSpotify.follow: Follow artists, playlists and users
-    :vartype ~AsyncSpotify.follow: :py:class:`~spoffy.modules.modules.AsyncFollow
+    :vartype ~AsyncSpotify.follow: :py:class:`~spoffy.modules.modules.AsyncFollow`
 
 
     :param client: An async client instance
@@ -74,6 +80,20 @@ class AsyncSpotify:
         self.library = AsyncLibrary(self.client)
         self.users = AsyncUsers(self.client)
         self.follow = AsyncFollow(self.client)
+
+    async def next_page(self, page: TPage) -> TPage:
+        url = get_page_url(page, direction="next")
+        return self.client.load(
+            await self.client.request(self.client.prepare_request("GET", url)),
+            page.__class__,
+        )
+
+    async def previous_page(self, page: TPage) -> TPage:
+        url = get_page_url(page, direction="previous")
+        return self.client.load(
+            await self.client.request(self.client.prepare_request("GET", url)),
+            page.__class__,
+        )
 
 
 class SyncSpotify:
@@ -105,8 +125,8 @@ class SyncSpotify:
     :vartype ~SyncSpotify.library: :py:class:`~spoffy.modules.modules.Library`
     :ivar ~SyncSpotify.users: Access to user endpoints
     :vartype ~SyncSpotify.users: :py:class:`~spoffy.modules.modules.Users`
-    :ivar ~Spotify.follow: Follow artists, playlists and users
-    :vartype ~Spotify.follow: :py:class:`~spoffy.modules.modules.Follow
+    :ivar ~SyncSpotify.follow: Follow artists, playlists and users
+    :vartype ~SyncSpotify.follow: :py:class:`~spoffy.modules.modules.Follow`
 
     :param client: An sync client instance
 
@@ -125,3 +145,17 @@ class SyncSpotify:
         self.library = Library(self.client)
         self.users = Users(self.client)
         self.follow = Follow(self.client)
+
+    def next_page(self, page: TPage) -> TPage:
+        url = get_page_url(page, direction="next")
+        return self.client.load(
+            self.client.request(self.client.prepare_request("GET", url)),
+            page.__class__,
+        )
+
+    def previous_page(self, page: TPage) -> TPage:
+        url = get_page_url(page, direction="previous")
+        return self.client.load(
+            self.client.request(self.client.prepare_request("GET", url)),
+            page.__class__,
+        )
