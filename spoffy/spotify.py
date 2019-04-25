@@ -19,6 +19,8 @@ from spoffy.modules.modules import (
     AsyncLibrary,
     Users,
     AsyncUsers,
+    Follow,
+    AsyncFollow,
 )
 
 
@@ -51,6 +53,9 @@ class AsyncSpotify:
     :vartype ~AsyncSpotify.library: :py:class:`~spoffy.modules.modules.AsyncLibrary
     :ivar ~AsyncSpotify.users: Access to user endpoints
     :vartype ~AsyncSpotify.users: :py:class:`~spoffy.modules.modules.AsyncUsers
+    :ivar ~AsyncSpotify.follow: Follow artists, playlists and users
+    :vartype ~AsyncSpotify.follow: :py:class:`~spoffy.modules.modules.AsyncFollow
+
 
     :param client: An async client instance
 
@@ -68,6 +73,7 @@ class AsyncSpotify:
         self.search = AsyncSearch(self.client)
         self.library = AsyncLibrary(self.client)
         self.users = AsyncUsers(self.client)
+        self.follow = AsyncFollow(self.client)
 
 
 class SyncSpotify:
@@ -99,6 +105,8 @@ class SyncSpotify:
     :vartype ~SyncSpotify.library: :py:class:`~spoffy.modules.modules.Library`
     :ivar ~SyncSpotify.users: Access to user endpoints
     :vartype ~SyncSpotify.users: :py:class:`~spoffy.modules.modules.Users`
+    :ivar ~Spotify.follow: Follow artists, playlists and users
+    :vartype ~Spotify.follow: :py:class:`~spoffy.modules.modules.Follow
 
     :param client: An sync client instance
 
@@ -116,3 +124,4 @@ class SyncSpotify:
         self.search = Search(self.client)
         self.library = Library(self.client)
         self.users = Users(self.client)
+        self.follow = Follow(self.client)

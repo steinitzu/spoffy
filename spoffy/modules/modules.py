@@ -1002,6 +1002,34 @@ class AsyncLibrary(AsyncApiModule):
         return await self._make_request(self.b.add_saved_tracks(ids=ids), None)
 
 
+class Follow(ApiModule):
+    __builder_class__ = builders.Follow
+
+    def follow_artists(self, ids: Sequence[str]) -> None:
+        return self._make_request(self.b.follow_artists(ids=ids), None)
+
+    def follow_playlist(self, playlist_id: str, public: bool = None) -> None:
+        return self._make_request(
+            self.b.follow_playlist(playlist_id=playlist_id, public=public),
+            None,
+        )
+
+
+class AsyncFollow(AsyncApiModule):
+    __builder_class__ = builders.Follow
+
+    async def follow_artists(self, ids: Sequence[str]) -> None:
+        return await self._make_request(self.b.follow_artists(ids=ids), None)
+
+    async def follow_playlist(
+        self, playlist_id: str, public: bool = None
+    ) -> None:
+        return await self._make_request(
+            self.b.follow_playlist(playlist_id=playlist_id, public=public),
+            None,
+        )
+
+
 class Auth(ApiModule, mixins.AuthMixin):
     __builder_class__ = builders.Auth
 

@@ -76,3 +76,11 @@ snapshots['test_Tracks_many_audio_features 1'] = "<Request(method='GET', url='ht
 snapshots['test_Tracks_many_tracks 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/tracks?ids=a%2Cb%2Cc%2Cd%2Ce%2Cf%2Cg&market=stringarg', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
 
 snapshots['test_Tracks_track 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/tracks/abcdefg?market=stringarg', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
+
+snapshots['test_Follow_follow_artists 1'] = '<Request(method=\'PUT\', url=\'https://api.spotify.com/v1/me/following?type=artist\', body=b\'{"ids": ["a", "b", "c", "d", "e", "f", "g"]}\', headers={\'Content-Type\': \'application/json; charset=utf-8\', \'Content-Length\': \'44\', \'Authorization\': \'Bearer fake_access_token\'})>'
+
+snapshots['test_Follow_follow_playlist 1'] = "<Request(method='PUT', url='https://api.spotify.com/v1/playlists/abcdefg/followers', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
+
+snapshots['test_Playlists_add_tracks_to_playlist 1'] = '<Request(method=\'POST\', url=\'https://api.spotify.com/v1/playlists/abcdefg/tracks\', body=b\'{"uris": ["a", "b", "c", "d", "e", "f", "g"], "position": 50}\', headers={\'Content-Type\': \'application/json; charset=utf-8\', \'Content-Length\': \'61\', \'Authorization\': \'Bearer fake_access_token\'})>'
+
+snapshots['test_Playlists_create_playlist 1'] = '<Request(method=\'POST\', url=\'https://api.spotify.com/v1/users/abcdefg/playlists\', body=b\'{"name": "abcdefg", "description": "stringarg"}\', headers={\'Content-Type\': \'application/json; charset=utf-8\', \'Content-Length\': \'47\', \'Authorization\': \'Bearer fake_access_token\'})>'

@@ -537,6 +537,27 @@ class Library(RequestBuilder):
         return self.b("PUT", "/me/tracks", params=dict(ids=",".join(ids)))
 
 
+class Follow(RequestBuilder):
+    @returns(None)
+    def follow_artists(self, ids: Sequence[str]) -> Request:
+        return self.b(
+            "PUT",
+            "/me/following",
+            params=dict(type="artist"),
+            body=dict(ids=ids),
+        )
+
+    @returns(None)
+    def follow_playlist(
+        self, playlist_id: str, public: bool = None
+    ) -> Request:
+        return self.b(
+            "PUT",
+            "/playlists/{}/followers".format(playlist_id),
+            body=dict(public=public) if public is not None else None,
+        )
+
+
 class Auth(RequestBuilder):
     @returns(models.ClientCredentialsToken)
     def get_token_from_client_credentials(self) -> Request:
