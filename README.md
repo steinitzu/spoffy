@@ -1,6 +1,6 @@
 # Spoffy
 
-The IDE friendly sync and async `Spotify API`_ wrapper for python.
+The IDE friendly sync and async [Spotify API](https://developer.spotify.com/documentation/web-api/) wrapper for python.
 
 Read the docs: https://spoffy.readthedocs.io
 
