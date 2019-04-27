@@ -24,6 +24,8 @@ from spoffy.modules.modules import (
     AsyncUsers,
     Follow,
     AsyncFollow,
+    Browse,
+    AsyncBrowse,
 )
 
 
@@ -61,6 +63,8 @@ class AsyncSpotify:
     :vartype ~AsyncSpotify.users: :py:class:`~spoffy.modules.modules.AsyncUsers`
     :ivar ~AsyncSpotify.follow: Follow artists, playlists and users
     :vartype ~AsyncSpotify.follow: :py:class:`~spoffy.modules.modules.AsyncFollow`
+    :ivar ~AsyncSpotify.browse: Recommendations and new releases
+    :vartype ~AsyncSpotify.browse: :py:class:`~spoffy.modules.modules.AsyncBrowse`
 
 
     :param client: An async client instance
@@ -80,6 +84,7 @@ class AsyncSpotify:
         self.library = AsyncLibrary(self.client)
         self.users = AsyncUsers(self.client)
         self.follow = AsyncFollow(self.client)
+        self.browse = AsyncBrowse(self.client)
 
     async def next_page(self, page: TPage) -> TPage:
         url = get_page_url(page, direction="next")
@@ -127,6 +132,8 @@ class SyncSpotify:
     :vartype ~SyncSpotify.users: :py:class:`~spoffy.modules.modules.Users`
     :ivar ~SyncSpotify.follow: Follow artists, playlists and users
     :vartype ~SyncSpotify.follow: :py:class:`~spoffy.modules.modules.Follow`
+    :ivar ~Spotify.browse: Recommendations and new releases
+    :vartype ~Spotify.browse: :py:class:`~spoffy.modules.modules.Browse`
 
     :param client: An sync client instance
 
@@ -145,6 +152,7 @@ class SyncSpotify:
         self.library = Library(self.client)
         self.users = Users(self.client)
         self.follow = Follow(self.client)
+        self.browse = Browse(self.client)
 
     def next_page(self, page: TPage) -> TPage:
         url = get_page_url(page, direction="next")

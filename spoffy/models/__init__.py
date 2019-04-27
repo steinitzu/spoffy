@@ -15,6 +15,7 @@ from spoffy.models.core import (
     AlbumTracksPaging,
     ArtistAlbumsPaging,
     ExternalUrls,
+    TrackSimple,
 )
 from spoffy.models.collections import TracksCollection, AudioFeaturesCollection
 from spoffy.models.audiofeatures import AudioFeatures
@@ -29,6 +30,7 @@ from spoffy.models.player import (
 )
 from spoffy.models.token import ClientCredentialsToken, UserToken, Token
 from spoffy.models.users import UserPublic, UserPrivate
+from spoffy.models.recommendations import RecommendationSeed, Recommendations
 
 
 __all__ = [
@@ -63,4 +65,7 @@ __all__ = [
     "PlaylistOwner",
     "TracksHref",
     "PlaylistSnapshotId",
+    "TrackSimple",
+    "RecommendationSeed",
+    "Recommendations",
 ]

@@ -279,6 +279,14 @@ Sync API modules
    :undoc-members:
    :noindex:
 
+
+.. autoclass:: Browse
+   :members:
+   :inherited-members:
+   :show-inheritance:
+   :undoc-members:
+   :noindex:
+
 .. autoclass:: Library
    :members:
    :inherited-members:
@@ -341,6 +349,13 @@ Async API modules
    :noindex:
 
 .. autoclass:: AsyncArtists
+   :members:
+   :inherited-members:
+   :show-inheritance:
+   :undoc-members:
+   :noindex:
+
+.. autoclass:: AsyncBrowse
    :members:
    :inherited-members:
    :show-inheritance:

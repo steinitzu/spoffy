@@ -1030,6 +1030,66 @@ class AsyncFollow(AsyncApiModule):
         )
 
 
+class Browse(ApiModule):
+    __builder_class__ = builders.Browse
+
+    def recommendations(
+        self,
+        seed_artists: Optional[Sequence[str]] = None,
+        seed_tracks: Optional[Sequence[str]] = None,
+        seed_genres: Optional[Sequence[str]] = None,
+        limit: Optional[int] = None,
+        **audio_features
+    ) -> models.Recommendations:
+        """
+        :param seed_artists: List of seed artist ids
+        :param seed_tracks: List of seed track ids
+        :param seed_genres: List of seed genres
+        :param limit: Max number of tracks
+        :param \\**audio_features: min_*/max_*/target_* audio feature filters
+        """
+        return self._make_request(
+            self.b.recommendations(
+                seed_artists=seed_artists,
+                seed_tracks=seed_tracks,
+                seed_genres=seed_genres,
+                limit=limit,
+                **audio_features
+            ),
+            models.Recommendations,
+        )
+
+
+class AsyncBrowse(AsyncApiModule):
+    __builder_class__ = builders.Browse
+
+    async def recommendations(
+        self,
+        seed_artists: Optional[Sequence[str]] = None,
+        seed_tracks: Optional[Sequence[str]] = None,
+        seed_genres: Optional[Sequence[str]] = None,
+        limit: Optional[int] = None,
+        **audio_features
+    ) -> models.Recommendations:
+        """
+        :param seed_artists: List of seed artist ids
+        :param seed_tracks: List of seed track ids
+        :param seed_genres: List of seed genres
+        :param limit: Max number of tracks
+        :param \\**audio_features: min_*/max_*/target_* audio feature filters
+        """
+        return await self._make_request(
+            self.b.recommendations(
+                seed_artists=seed_artists,
+                seed_tracks=seed_tracks,
+                seed_genres=seed_genres,
+                limit=limit,
+                **audio_features
+            ),
+            models.Recommendations,
+        )
+
+
 class Auth(ApiModule, mixins.AuthMixin):
     __builder_class__ = builders.Auth
 

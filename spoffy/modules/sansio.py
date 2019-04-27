@@ -1,5 +1,5 @@
 from base64 import b64encode
-from typing import Sequence, Optional, Dict, Union
+from typing import Sequence, Optional, Dict, Union, Any
 
 from spoffy.sansio import Request
 from spoffy.client.common import ClientCommon
@@ -556,6 +556,36 @@ class Follow(RequestBuilder):
             "/playlists/{}/followers".format(playlist_id),
             body=dict(public=public) if public is not None else None,
         )
+
+
+class Browse(RequestBuilder):
+    @returns(models.Recommendations)
+    def recommendations(
+        self,
+        seed_artists: Optional[Sequence[str]] = None,
+        seed_tracks: Optional[Sequence[str]] = None,
+        seed_genres: Optional[Sequence[str]] = None,
+        limit: Optional[int] = None,
+        **audio_features
+    ) -> Request:
+        """
+        :param seed_artists: List of seed artist ids
+        :param seed_tracks: List of seed track ids
+        :param seed_genres: List of seed genres
+        :param limit: Max number of tracks
+        :param \\**audio_features: min_*/max_*/target_* audio feature filters
+        """
+        params: Dict[str, Any] = {}
+        if seed_artists:
+            params["seed_artists"] = ",".join(seed_artists)
+        if seed_tracks:
+            params["seed_tracks"] = ",".join(seed_tracks)
+        if seed_genres:
+            params["seed_genres"] = ",".join(seed_genres)
+        if limit is not None:
+            params["limit"] = limit
+        params.update(audio_features)
+        return self.b("GET", "/recommendations", params=params)
 
 
 class Auth(RequestBuilder):
