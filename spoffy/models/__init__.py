@@ -13,7 +13,8 @@ from spoffy.models.core import (
     Track,
     Album,
     AlbumTracksPaging,
-    ArtistAlbumsPaging,
+    AlbumSimplePaging,
+    NewAlbumReleases,
     ExternalUrls,
     TrackSimple,
 )
@@ -41,7 +42,6 @@ __all__ = [
     "Track",
     "Album",
     "AlbumTracksPaging",
-    "ArtistAlbumsPaging",
     "TracksCollection",
     "AudioFeaturesCollection",
     "AudioFeatures",
@@ -68,4 +68,6 @@ __all__ = [
     "TrackSimple",
     "RecommendationSeed",
     "Recommendations",
+    "AlbumSimplePaging",
+    "NewAlbumReleases",
 ]

@@ -119,5 +119,9 @@ class Album(AlbumBase):
     available_markets: Opt[List[str]] = None
 
 
-class ArtistAlbumsPaging(OffsetPaging):
+class AlbumSimplePaging(OffsetPaging):
     items: List[AlbumSimple]
+
+
+class NewAlbumReleases(SpotifyObject):
+    albums: AlbumSimplePaging

@@ -22,7 +22,7 @@ class Artists(ApiModule):
         artist_id: str,
         include_groups: Sequence[str] = None,
         market: str = None,
-    ) -> models.ArtistAlbumsPaging:
+    ) -> models.AlbumSimplePaging:
         """
         Get all artist's albums
 
@@ -36,7 +36,7 @@ class Artists(ApiModule):
                 include_groups=include_groups,
                 market=market,
             ),
-            models.ArtistAlbumsPaging,
+            models.AlbumSimplePaging,
         )
 
 
@@ -58,7 +58,7 @@ class AsyncArtists(AsyncApiModule):
         artist_id: str,
         include_groups: Sequence[str] = None,
         market: str = None,
-    ) -> models.ArtistAlbumsPaging:
+    ) -> models.AlbumSimplePaging:
         """
         Get all artist's albums
 
@@ -72,7 +72,7 @@ class AsyncArtists(AsyncApiModule):
                 include_groups=include_groups,
                 market=market,
             ),
-            models.ArtistAlbumsPaging,
+            models.AlbumSimplePaging,
         )
 
 
@@ -1059,6 +1059,17 @@ class Browse(ApiModule):
             models.Recommendations,
         )
 
+    def new_releases(
+        self,
+        country: Optional[str] = None,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
+    ) -> models.NewAlbumReleases:
+        return self._make_request(
+            self.b.new_releases(country=country, limit=limit, offset=offset),
+            models.NewAlbumReleases,
+        )
+
 
 class AsyncBrowse(AsyncApiModule):
     __builder_class__ = builders.Browse
@@ -1087,6 +1098,17 @@ class AsyncBrowse(AsyncApiModule):
                 **audio_features
             ),
             models.Recommendations,
+        )
+
+    async def new_releases(
+        self,
+        country: Optional[str] = None,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
+    ) -> models.NewAlbumReleases:
+        return await self._make_request(
+            self.b.new_releases(country=country, limit=limit, offset=offset),
+            models.NewAlbumReleases,
         )
 
 

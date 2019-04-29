@@ -32,7 +32,7 @@ class Artists(RequestBuilder):
         """
         return self.b(method="GET", url="/artists/{}".format(artist_id))
 
-    @returns(models.ArtistAlbumsPaging)
+    @returns(models.AlbumSimplePaging)
     def artist_albums(
         self,
         artist_id: str,
@@ -586,6 +586,21 @@ class Browse(RequestBuilder):
             params["limit"] = limit
         params.update(audio_features)
         return self.b("GET", "/recommendations", params=params)
+
+    @returns(models.NewAlbumReleases)
+    def new_releases(
+        self,
+        country: Optional[str] = None,
+        limit: Optional[int] = None,
+        offset: Optional[int] = None,
+    ) -> Request:
+        return self.b(
+            "GET",
+            "/browse/new-releases",
+            params=_clear_nones(
+                dict(country=country, limit=limit, offset=offset)
+            ),
+        )
 
 
 class Auth(RequestBuilder):
