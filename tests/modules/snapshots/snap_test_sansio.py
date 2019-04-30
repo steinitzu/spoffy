@@ -88,3 +88,5 @@ snapshots['test_Playlists_create_playlist 1'] = '<Request(method=\'POST\', url=\
 snapshots['test_Browse_recommendations 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/recommendations?limit=50', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
 
 snapshots['test_Browse_new_releases 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/browse/new-releases?country=stringarg&limit=50&offset=50', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
+
+snapshots['test_Artists_many_artists 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/artists?ids=a%2Cb%2Cc%2Cd%2Ce%2Cf%2Cg', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"

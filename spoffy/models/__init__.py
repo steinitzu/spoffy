@@ -18,7 +18,11 @@ from spoffy.models.core import (
     ExternalUrls,
     TrackSimple,
 )
-from spoffy.models.collections import TracksCollection, AudioFeaturesCollection
+from spoffy.models.collections import (
+    TracksCollection,
+    AudioFeaturesCollection,
+    ArtistsCollection,
+)
 from spoffy.models.audiofeatures import AudioFeatures
 from spoffy.models.search import SearchResults
 from spoffy.models.personalization import TopTracksPaging, TopArtistsPaging
@@ -70,4 +74,5 @@ __all__ = [
     "Recommendations",
     "AlbumSimplePaging",
     "NewAlbumReleases",
+    "ArtistsCollection",
 ]

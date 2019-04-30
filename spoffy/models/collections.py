@@ -1,6 +1,6 @@
 from typing import List, Union
 
-from spoffy.models.core import Track
+from spoffy.models.core import Track, Artist
 from spoffy.models.audiofeatures import AudioFeatures
 from spoffy.models.base import SpotifyObject
 
@@ -11,3 +11,7 @@ class TracksCollection(SpotifyObject):
 
 class AudioFeaturesCollection(SpotifyObject):
     audio_features: List[Union[AudioFeatures, None]]
+
+
+class ArtistsCollection(SpotifyObject):
+    artists: List[Union[Artist, None]]

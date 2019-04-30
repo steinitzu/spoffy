@@ -32,6 +32,15 @@ class Artists(RequestBuilder):
         """
         return self.b(method="GET", url="/artists/{}".format(artist_id))
 
+    @returns(models.ArtistsCollection)
+    def many_artists(self, ids: Sequence[str]) -> Request:
+        """
+        Get several artists by ID
+
+        :param ids: List of Spotify artist IDs
+        """
+        return self.b("GET", "/artists", params=dict(ids=",".join(ids)))
+
     @returns(models.AlbumSimplePaging)
     def artist_albums(
         self,

@@ -17,6 +17,16 @@ class Artists(ApiModule):
             self.b.artist(artist_id=artist_id), models.Artist
         )
 
+    def many_artists(self, ids: Sequence[str]) -> models.ArtistsCollection:
+        """
+        Get several artists by ID
+
+        :param ids: List of Spotify artist IDs
+        """
+        return self._make_request(
+            self.b.many_artists(ids=ids), models.ArtistsCollection
+        )
+
     def artist_albums(
         self,
         artist_id: str,
@@ -51,6 +61,18 @@ class AsyncArtists(AsyncApiModule):
         """
         return await self._make_request(
             self.b.artist(artist_id=artist_id), models.Artist
+        )
+
+    async def many_artists(
+        self, ids: Sequence[str]
+    ) -> models.ArtistsCollection:
+        """
+        Get several artists by ID
+
+        :param ids: List of Spotify artist IDs
+        """
+        return await self._make_request(
+            self.b.many_artists(ids=ids), models.ArtistsCollection
         )
 
     async def artist_albums(
