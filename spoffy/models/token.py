@@ -14,7 +14,7 @@ class Token(SpotifyObject):
 
     def __init__(self, **d):
         super().__init__(**d)
-        if not hasattr(self, "expires_at"):
+        if not hasattr(self, "expires_at") or self.expires_at is None:
             self.expires_at = int(time.time()) + self.expires_in - 1
 
 
@@ -23,7 +23,6 @@ class ClientCredentialsToken(Token):
     A token generated through client credentials
 
     :param access_token: A Spotify access token
-    :param token_type: The token type (always `Bearer`)
     :param scope: Scopes of
         this token (space seperated list)
     :param expires_in: Expiry time in seconds from token

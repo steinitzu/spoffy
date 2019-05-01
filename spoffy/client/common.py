@@ -1,7 +1,5 @@
 from typing import Optional, Union, MutableMapping
 
-from cattr import Converter
-
 from spoffy.models import Token
 from spoffy.sansio import Response
 from spoffy.sansio import Request
@@ -51,7 +49,6 @@ class ClientCommon:
         self.redirect_uri = redirect_uri
         self.scope = scope
         self.state = state
-        self._converter = Converter()
 
     def prepare_request(
         self,

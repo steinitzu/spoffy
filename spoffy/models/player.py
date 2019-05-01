@@ -1,4 +1,4 @@
-from typing import Optional as Opt, List, Dict
+from typing import Optional as Opt, List
 
 from spoffy.models.core import Track, ExternalUrls
 from spoffy.models.paging import CursorPaging
@@ -36,7 +36,6 @@ class CurrentPlayback(SpotifyObject):
     is_playing: bool
     item: Opt[Track]
     currently_playing_type: str
-    actions: Dict  # Undocumented param, keep as dict
 
 
 class PlayHistoryItem(SpotifyObject):

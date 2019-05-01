@@ -24,8 +24,6 @@ class VideoThumbnail(SpotifyObject):
 
 
 class PlaylistTrackTrack(Track):
-    track: bool
-    episode: bool
     available_markets: Opt[List[str]] = None
     linked_from: Opt[TrackLink] = None
     is_playable: Opt[bool] = None
@@ -35,9 +33,7 @@ class PlaylistTrack(SpotifyObject):
     added_at: Opt[str]  # todo: datetime
     added_by: Opt[PlaylistTrackAddedBy]
     is_local: bool
-    primary_color: Opt[str] = None
     track: PlaylistTrackTrack
-    video_thumbnail: VideoThumbnail
 
 
 class PlaylistTracksPaging(OffsetPaging):
