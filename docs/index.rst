@@ -411,7 +411,6 @@ Object model
 .. automodule:: spoffy.models
    :members:
    :undoc-members:
-   :inherited-members:
    :noindex:
 
 

@@ -11,7 +11,7 @@ spoffy.models.audiofeatures module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 
 spoffy.models.base module
 -------------------------
@@ -20,7 +20,7 @@ spoffy.models.base module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 
 spoffy.models.collections module
 --------------------------------
@@ -29,7 +29,7 @@ spoffy.models.collections module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 
 spoffy.models.compat module
 ---------------------------
@@ -38,7 +38,7 @@ spoffy.models.compat module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 
 spoffy.models.core module
 -------------------------
@@ -47,7 +47,7 @@ spoffy.models.core module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 
 spoffy.models.image module
 --------------------------
@@ -56,7 +56,7 @@ spoffy.models.image module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 
 spoffy.models.library module
 ----------------------------
@@ -65,7 +65,7 @@ spoffy.models.library module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 
 spoffy.models.paging module
 ---------------------------
@@ -74,7 +74,7 @@ spoffy.models.paging module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 
 spoffy.models.personalization module
 ------------------------------------
@@ -83,7 +83,7 @@ spoffy.models.personalization module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 
 spoffy.models.player module
 ---------------------------
@@ -92,7 +92,7 @@ spoffy.models.player module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 
 spoffy.models.playlists module
 ------------------------------
@@ -101,7 +101,7 @@ spoffy.models.playlists module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 
 spoffy.models.search module
 ---------------------------
@@ -110,7 +110,7 @@ spoffy.models.search module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 
 spoffy.models.token module
 --------------------------
@@ -119,7 +119,7 @@ spoffy.models.token module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 
 spoffy.models.users module
 --------------------------
@@ -128,7 +128,7 @@ spoffy.models.users module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 
 
 Module contents
@@ -138,4 +138,3 @@ Module contents
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
