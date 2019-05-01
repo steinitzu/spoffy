@@ -27,7 +27,7 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.6"
 urlobject = "^2"
-pydantic = "^0.24.0"
+pydantic = "^0.23"
 
 [tool.poetry.dev-dependencies]
 pytest = "^3.0"
