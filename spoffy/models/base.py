@@ -10,6 +10,7 @@ class CustomMeta(BaseModel.__class__):  # type:ignore
         ret = super().__new__(mcs, name, bases, namespace)
         for field in ret.__fields__.values():
             field.required = False
+            field.prepare()
         return ret
 
 

@@ -1,6 +1,6 @@
 from spoffy.models import Artist, AlbumSimplePaging, Playlist, CurrentPlayback
 
-from tests.mock.responses.get_artist import artist
+from tests.mock.responses.get_artist import artist, artist_with_null_followers
 from tests.mock.responses.get_artist_albums import artist_albums_relinked
 from tests.mock.responses.get_playlist import (
     playlist_w_markets,
@@ -13,6 +13,7 @@ from tests.unmarshalling.util import dict_obj_diff
 
 def test_all():
     pairs = [
+        (artist_with_null_followers, Artist),
         (artist, Artist),
         (artist_albums_relinked, AlbumSimplePaging),
         (playlist_w_markets, Playlist),

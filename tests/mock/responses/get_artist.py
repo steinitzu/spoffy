@@ -1,5 +1,41 @@
 import json
 
+_jartist_with_null_followers = """
+{
+      "external_urls": {
+        "spotify": "https://open.spotify.com/artist/1letzwegdFBTvoyJFSu8zK"
+      },
+      "followers": {
+        "href": null,
+        "total": null
+      },
+      "genres": [],
+      "href": "https://api.spotify.com/v1/artists/1letzwegdFBTvoyJFSu8zK",
+      "id": "1letzwegdFBTvoyJFSu8zK",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/de7b8a505c46c0366e7adfa9ca99a2b094a553b6",
+          "width": 640
+        },
+        {
+          "height": 320,
+          "url": "https://i.scdn.co/image/298d308873e5d788277e720dd0c8a11f799cad92",
+          "width": 320
+        },
+        {
+          "height": 160,
+          "url": "https://i.scdn.co/image/78ec2da2b382f20fe528cb74e6c3d65564096276",
+          "width": 160
+        }
+      ],
+      "name": "Perttu",
+      "popularity": 39,
+      "type": "artist",
+      "uri": "spotify:artist:1letzwegdFBTvoyJFSu8zK"
+    }
+"""
+
 _jartist = """
 {
   "external_urls": {
@@ -44,3 +80,4 @@ _jartist = """
 """
 
 artist = json.loads(_jartist)
+artist_with_null_followers = json.loads(_jartist_with_null_followers)
