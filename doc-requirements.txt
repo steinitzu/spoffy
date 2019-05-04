@@ -1,6 +1,6 @@
 sphinxcontrib-asyncio
 sphinx-autodoc-typehints
-cattrs
 urlobject
 requests
 aiohttp
+pydantic
