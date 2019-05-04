@@ -41,8 +41,6 @@ class AsyncSpotify:
 
     >>> await AsyncSpotify(...).tracks.audio_features('sometrackid')
 
-    :ivar ~AsyncSpotify.client: The underlying client instance
-    :vartype ~AsyncSpotify.client: :class:`AsyncClient`
     :ivar ~AsyncSpotify.auth: Authorization methods
     :vartype ~AsyncSpotify.auth: :py:class:`~spoffy.modules.modules.AsyncAuth`
     :ivar ~AsyncSpotify.albums: Access to album endpoints
@@ -110,8 +108,6 @@ class SyncSpotify:
 
     >>> SyncSpotify(...).tracks.audio_features('sometrackid')
 
-    :ivar ~SyncSpotify.client: The underlying client instance
-    :vartype ~SyncSpotify.client: :py:class:`~SyncClient`
     :ivar ~SyncSpotify.auth: Authorization methods
     :vartype ~SyncSpotify.auth: :py:class:`~spoffy.modules.modules.Auth`
     :ivar ~SyncSpotify.albums: Access to album endpoints

@@ -175,20 +175,25 @@ Spotify wrapper
 
 Sync and async spotify API wrappers that wrap a client instance and expose the spotify api organized into individual modules
 
+Sync
+----
+
 .. autoclass:: spoffy.spotify.SyncSpotify
    :members:
 
+
+Async
+-----
 
 .. autoclass:: spoffy.spotify.AsyncSpotify
    :members:
 
 
 Client base
------------
+===========
 
 .. autoclass:: spoffy.client.base.SyncClient
    :members:
-   :inherited-members:
    :show-inheritance:
    :undoc-members:
 
@@ -197,7 +202,6 @@ Client base
 
 .. autoclass:: spoffy.client.base.AsyncClient
    :members:
-   :inherited-members:
    :show-inheritance:
    :undoc-members:
 
@@ -233,6 +237,7 @@ Sync API modules
 ================
 
 .. module:: spoffy.modules.modules
+
 
 .. autoclass:: Auth
    :members:

@@ -3,7 +3,7 @@ from typing import Optional
 import aiohttp
 
 from spoffy.models import Token
-from spoffy.client.base import AsyncClient, ClientCommon
+from spoffy.client.base import AsyncClient
 from spoffy.sansio import Request, Response
 from spoffy.spotify import AsyncSpotify
 
@@ -81,5 +81,3 @@ def make_spotify(
             state=state,
         )
     )
-
-

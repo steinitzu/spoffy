@@ -10,6 +10,8 @@ from spoffy.models.playlists import (
 )
 from spoffy.models.core import (
     Artist,
+    ArtistSimple,
+    Followers,
     Track,
     Album,
     AlbumTracksPaging,
@@ -17,6 +19,10 @@ from spoffy.models.core import (
     NewAlbumReleases,
     ExternalUrls,
     TrackSimple,
+    TrackLink,
+    TrackExternalIds,
+    AlbumSimple,
+    Restrictions,
 )
 from spoffy.models.collections import (
     TracksCollection,
@@ -24,7 +30,13 @@ from spoffy.models.collections import (
     ArtistsCollection,
 )
 from spoffy.models.audiofeatures import AudioFeatures
-from spoffy.models.search import SearchResults
+from spoffy.models.search import (
+    SearchResults,
+    SearchArtistsPaging,
+    SearchAlbumsPaging,
+    SearchTracksPaging,
+    SearchPlaylistsPaging,
+)
 from spoffy.models.personalization import TopTracksPaging, TopArtistsPaging
 from spoffy.models.library import SavedAlbumsPaging, SavedTracksPaging
 from spoffy.models.player import (
@@ -50,6 +62,10 @@ __all__ = [
     "AudioFeaturesCollection",
     "AudioFeatures",
     "SearchResults",
+    "SearchArtistsPaging",
+    "SearchAlbumsPaging",
+    "SearchTracksPaging",
+    "SearchPlaylistsPaging",
     "TopTracksPaging",
     "TopArtistsPaging",
     "SavedAlbumsPaging",
@@ -68,6 +84,8 @@ __all__ = [
     "ExternalUrls",
     "PlaylistOwner",
     "TracksHref",
+    "TrackLink",
+    "TrackExternalIds",
     "PlaylistSnapshotId",
     "TrackSimple",
     "RecommendationSeed",
@@ -75,4 +93,8 @@ __all__ = [
     "AlbumSimplePaging",
     "NewAlbumReleases",
     "ArtistsCollection",
+    "Followers",
+    "ArtistSimple",
+    "AlbumSimple",
+    "Restrictions",
 ]

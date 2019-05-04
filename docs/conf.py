@@ -33,9 +33,10 @@ master_doc = "index"
 # ones.
 extensions = [
     "sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
     "sphinx.ext.napoleon",
     "sphinxcontrib.asyncio",
-    "sphinx_autodoc_typehints"
+    "sphinx_autodoc_typehints",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -63,3 +64,35 @@ html_theme_options = {"collapse_navigation": False}
 add_module_names = True
 autodoc_inherit_docstrings = True
 napoleon_use_param = True
+
+
+def make_model_docstrings():
+    """
+    Make docstrings for all spotify objects
+    """
+    # Hack
+    from spoffy import models
+
+    from sphinx_autodoc_typehints import (
+        format_annotation as _format_annotation,
+    )
+
+    models.__all__.sort()
+
+    def _make_doc(cls):
+        f = "    {} ({})"
+        ret = ""
+        for key, field in cls.__fields__.items():
+            ret += f.format(key, _format_annotation(field.type_)) + "\n"
+        return "\nArgs:\n" + ret
+
+    for classname in models.__all__:
+        _klass = getattr(models, classname)
+        _klass.__module__ = models.__name__
+
+    for classname in models.__all__:
+        _klass = getattr(models, classname)
+        _klass.__doc__ = _make_doc(_klass)
+
+
+make_model_docstrings()

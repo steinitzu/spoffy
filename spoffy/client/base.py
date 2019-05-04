@@ -26,5 +26,3 @@ class SyncClient(ClientCommon):
     @abstractmethod
     def request(self, request: Request) -> Response:
         pass
-
-

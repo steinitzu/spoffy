@@ -32,6 +32,18 @@ class Followers(SpotifyObject):
 
 
 class ArtistSimple(SpotifyObject):
+    """
+    A simplified artist object
+
+    Args:
+        id (str): The artist ID
+        external_urls (ExternalUrls): External links
+        href (str): API href for this object
+        name (str): Artist name
+        type (str): Type (``"artist"``)
+        uri (str): Spotify URI
+    """
+
     id: str
     external_urls: ExternalUrls
     href: str
@@ -42,12 +54,21 @@ class ArtistSimple(SpotifyObject):
 
 class Artist(ArtistSimple):
     """
+    A full artist object
+
     Args:
-        followers (Followers): A followers object
+        id (str): The artist ID
+        external_urls (ExternalUrls): External links
+        href (str): API href for this object
+        name (str): Artist name
+        type (str): Type (``"artist"``)
+        uri (str): Spotify URI
+        followers (Followers): Followers object
         genres (List[str]): Artist genres
         images (List[Image]): Artist images
         popularity (int): Artist popularity (0-100)
     """
+
     followers: Followers
     genres: List[str]
     images: List[Image]
