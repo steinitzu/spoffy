@@ -83,5 +83,3 @@ def make_spotify(
     )
 
 
-AioHttpClient.__doc__ += ClientCommon.__doc__.split("----")[1]  # type: ignore
-make_spotify.__doc__ += ClientCommon.__doc__.split("----")[1]  # type: ignore

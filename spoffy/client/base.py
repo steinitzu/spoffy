@@ -28,5 +28,3 @@ class SyncClient(ClientCommon):
         pass
 
 
-SyncClient.__doc__ += ClientCommon.__doc__.split("----")[1]  # type: ignore
-AsyncClient.__doc__ += ClientCommon.__doc__.split("----")[1]  # type: ignore

@@ -82,6 +82,3 @@ def make_spotify(
         )
     )
 
-
-RequestsClient.__doc__ += ClientCommon.__doc__.split("----")[1]  # type: ignore
-make_spotify.__doc__ += ClientCommon.__doc__.split("----")[1]  # type: ignore

@@ -41,6 +41,13 @@ class ArtistSimple(SpotifyObject):
 
 
 class Artist(ArtistSimple):
+    """
+    Args:
+        followers (Followers): A followers object
+        genres (List[str]): Artist genres
+        images (List[Image]): Artist images
+        popularity (int): Artist popularity (0-100)
+    """
     followers: Followers
     genres: List[str]
     images: List[Image]

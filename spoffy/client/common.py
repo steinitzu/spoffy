@@ -1,4 +1,4 @@
-from typing import Optional, Union, MutableMapping
+from typing import Optional, Union, MutableMapping, Any
 
 from spoffy.models import Token
 from spoffy.sansio import Response
@@ -10,16 +10,15 @@ class ClientCommon:
     A sansio client implementation.
     This does no IO on its own.
 
-    ----
+    Args:
+        access_token: A Spotify access token. Supersedes the `token` parameter
+        token: A token object, either for user or client
+        client_id: Client ID for oauth login
+        client_secret: Client secret for oauth login
+        redirect_uri: Redirect URI for oauth login
+        scope: Space separated list of scopes for oauth login
+        state: State string for oauth login
 
-    :param access_token: A Spotify access token
-        Supersedes the `token` parameter
-    :param token: A token object, either for user or client
-    :param client_id: Client ID for oauth login
-    :param client_secret: Client secret for oauth login
-    :param redirect_uri: Redirect URI for oauth login
-    :param scope: Space separated list of scopes for oauth login
-    :param state: State string for oauth login
     """
 
     _default_prefix = "https://api.spotify.com/v1"
@@ -54,24 +53,25 @@ class ClientCommon:
         self,
         method: str,
         url: str,
-        params: Optional[MutableMapping] = None,
-        body: Optional[Union[bytes, MutableMapping]] = None,
+        params: Optional[MutableMapping[str, Any]] = None,
+        body: Optional[Union[bytes, MutableMapping[str, Any]]] = None,
         headers: Optional[MutableMapping[str, str]] = None,
         access_token: Optional[str] = None,
     ) -> Request:
         """
         Create a request object from the given arguments
 
-        :param method: The request http method
-            ( ``GET`` / ``POST`` / ``PUT`` / ``DELETE`` )
-        :param url: The request URL, relative URLs get prefixed with
-            :py:attr:`~base_url`
-        :param params: Dict of query parameters to add to URL
-        :param body: Request body as either bytes or json serializable dict
-        :param headers: Dict of headers to add to request
-        :param access_token: Override client access token
-            If not provided and no explicit ``Authorization`` header,
-            the :py:attr:`~access_token` stored on this instance is used
+        Args:
+            method: The request http method
+              ( ``GET`` / ``POST`` / ``PUT`` / ``DELETE`` )
+            url: The request URL, relative URLs get
+              prefixed with :py:attr:`~base_url`
+            params: Dict of query parameters to add to URL
+            body: Request body as either bytes or json serializable dict
+            headers: Dict of headers to add to request
+            access_token: Override client access token
+              If not provided and no explicit ``Authorization`` header,
+              the :py:attr:`~access_token` stored on this instance is used
         """
         if (
             url.startswith(self._default_prefix)
