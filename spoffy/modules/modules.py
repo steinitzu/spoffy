@@ -49,6 +49,15 @@ class Artists(ApiModule):
             models.AlbumSimplePaging,
         )
 
+    def related(self, artist_id: str) -> models.RelatedArtistsCollection:
+        """
+        Get related artists for given artist_id
+        """
+        return self._make_request(
+            self.b.related(artist_id=artist_id),
+            models.RelatedArtistsCollection,
+        )
+
 
 class AsyncArtists(AsyncApiModule):
     __builder_class__ = builders.Artists
@@ -95,6 +104,15 @@ class AsyncArtists(AsyncApiModule):
                 market=market,
             ),
             models.AlbumSimplePaging,
+        )
+
+    async def related(self, artist_id: str) -> models.RelatedArtistsCollection:
+        """
+        Get related artists for given artist_id
+        """
+        return await self._make_request(
+            self.b.related(artist_id=artist_id),
+            models.RelatedArtistsCollection,
         )
 
 

@@ -22,6 +22,7 @@ from spoffy.models.collections import (
     TracksCollection,
     AudioFeaturesCollection,
     ArtistsCollection,
+    RelatedArtistsCollection,
 )
 from spoffy.models.audiofeatures import AudioFeatures
 from spoffy.models.search import SearchResults
@@ -75,4 +76,5 @@ __all__ = [
     "AlbumSimplePaging",
     "NewAlbumReleases",
     "ArtistsCollection",
+    "RelatedArtistsCollection"
 ]

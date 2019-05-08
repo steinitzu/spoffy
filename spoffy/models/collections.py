@@ -15,3 +15,7 @@ class AudioFeaturesCollection(SpotifyObject):
 
 class ArtistsCollection(SpotifyObject):
     artists: List[Union[Artist, None]]
+
+
+class RelatedArtistsCollection(SpotifyObject):
+    artists: List[Artist]

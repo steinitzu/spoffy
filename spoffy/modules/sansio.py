@@ -66,6 +66,13 @@ class Artists(RequestBuilder):
             params=params,
         )
 
+    @returns(models.RelatedArtistsCollection)
+    def related(self, artist_id: str) -> Request:
+        """
+        Get related artists for given artist_id
+        """
+        return self.b("GET", "/artists/{}/related-artists".format(artist_id))
+
 
 class Playlists(RequestBuilder):
     @returns(models.Playlist)
