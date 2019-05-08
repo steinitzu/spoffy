@@ -7,6 +7,7 @@ from spoffy.models.playlists import (
     PlaylistOwner,
     PlaylistSnapshotId,
     TracksHref,
+    PlaylistSimplePaging,
 )
 from spoffy.models.core import (
     Artist,
@@ -77,4 +78,5 @@ __all__ = [
     "NewAlbumReleases",
     "ArtistsCollection",
     "RelatedArtistsCollection",
+    "PlaylistSimplePaging",
 ]

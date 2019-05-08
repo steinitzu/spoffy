@@ -194,10 +194,10 @@ class Playlists(ApiModule):
 
     def my_playlists(
         self, limit: Optional[int] = None, offset: Optional[int] = None
-    ) -> models.PlaylistSimple:
+    ) -> models.PlaylistSimplePaging:
         return self._make_request(
             self.b.my_playlists(limit=limit, offset=offset),
-            models.PlaylistSimple,
+            models.PlaylistSimplePaging,
         )
 
 
@@ -279,10 +279,10 @@ class AsyncPlaylists(AsyncApiModule):
 
     async def my_playlists(
         self, limit: Optional[int] = None, offset: Optional[int] = None
-    ) -> models.PlaylistSimple:
+    ) -> models.PlaylistSimplePaging:
         return await self._make_request(
             self.b.my_playlists(limit=limit, offset=offset),
-            models.PlaylistSimple,
+            models.PlaylistSimplePaging,
         )
 
 

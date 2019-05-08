@@ -118,4 +118,8 @@ class Playlist(PlaylistBase):
     tracks: PlaylistTracksPaging
 
 
+class PlaylistSimplePaging(OffsetPaging):
+    items: List[PlaylistSimple]
+
+
 Playlist.__doc__ += PlaylistBase.__doc__  # type: ignore

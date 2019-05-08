@@ -149,7 +149,7 @@ class Playlists(RequestBuilder):
             body=_clear_nones(dict(uris=uris, position=position)),
         )
 
-    @returns(models.PlaylistSimple)
+    @returns(models.PlaylistSimplePaging)
     def my_playlists(
         self, limit: Optional[int] = None, offset: Optional[int] = None
     ) -> Request:
