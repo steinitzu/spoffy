@@ -92,3 +92,7 @@ snapshots['test_Browse_new_releases 1'] = "<Request(method='GET', url='https://a
 snapshots['test_Artists_many_artists 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/artists?ids=a%2Cb%2Cc%2Cd%2Ce%2Cf%2Cg', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
 
 snapshots['test_Artists_related 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/artists/abcdefg/related-artists', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
+
+snapshots['test_Follow_unfollow_playlist 1'] = "<Request(method='DELETE', url='https://api.spotify.com/v1/playlists/abcdefg/followers', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
+
+snapshots['test_Playlists_my_playlists 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/me/playlists?limit=50&offset=50', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"

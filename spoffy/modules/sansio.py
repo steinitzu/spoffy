@@ -149,6 +149,16 @@ class Playlists(RequestBuilder):
             body=_clear_nones(dict(uris=uris, position=position)),
         )
 
+    @returns(models.PlaylistSimple)
+    def my_playlists(
+        self, limit: Optional[int] = None, offset: Optional[int] = None
+    ) -> Request:
+        return self.b(
+            "GET",
+            "/me/playlists",
+            params=_clear_nones(dict(limit=limit, offset=offset)),
+        )
+
 
 class Albums(RequestBuilder):
     """
@@ -572,6 +582,10 @@ class Follow(RequestBuilder):
             "/playlists/{}/followers".format(playlist_id),
             body=dict(public=public) if public is not None else None,
         )
+
+    @returns(None)
+    def unfollow_playlist(self, playlist_id: str) -> Request:
+        return self.b("DELETE", "/playlists/{}/followers".format(playlist_id))
 
 
 class Browse(RequestBuilder):

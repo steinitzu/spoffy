@@ -76,5 +76,5 @@ __all__ = [
     "AlbumSimplePaging",
     "NewAlbumReleases",
     "ArtistsCollection",
-    "RelatedArtistsCollection"
+    "RelatedArtistsCollection",
 ]

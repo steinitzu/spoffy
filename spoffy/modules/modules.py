@@ -192,6 +192,14 @@ class Playlists(ApiModule):
             models.PlaylistSnapshotId,
         )
 
+    def my_playlists(
+        self, limit: Optional[int] = None, offset: Optional[int] = None
+    ) -> models.PlaylistSimple:
+        return self._make_request(
+            self.b.my_playlists(limit=limit, offset=offset),
+            models.PlaylistSimple,
+        )
+
 
 class AsyncPlaylists(AsyncApiModule):
     __builder_class__ = builders.Playlists
@@ -267,6 +275,14 @@ class AsyncPlaylists(AsyncApiModule):
                 playlist_id=playlist_id, uris=uris, position=position
             ),
             models.PlaylistSnapshotId,
+        )
+
+    async def my_playlists(
+        self, limit: Optional[int] = None, offset: Optional[int] = None
+    ) -> models.PlaylistSimple:
+        return await self._make_request(
+            self.b.my_playlists(limit=limit, offset=offset),
+            models.PlaylistSimple,
         )
 
 
@@ -1054,6 +1070,11 @@ class Follow(ApiModule):
             None,
         )
 
+    def unfollow_playlist(self, playlist_id: str) -> None:
+        return self._make_request(
+            self.b.unfollow_playlist(playlist_id=playlist_id), None
+        )
+
 
 class AsyncFollow(AsyncApiModule):
     __builder_class__ = builders.Follow
@@ -1067,6 +1088,11 @@ class AsyncFollow(AsyncApiModule):
         return await self._make_request(
             self.b.follow_playlist(playlist_id=playlist_id, public=public),
             None,
+        )
+
+    async def unfollow_playlist(self, playlist_id: str) -> None:
+        return await self._make_request(
+            self.b.unfollow_playlist(playlist_id=playlist_id), None
         )
 
 
