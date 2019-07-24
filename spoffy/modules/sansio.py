@@ -338,6 +338,13 @@ class Player(RequestBuilder):
         params = _clear_nones(dict(limit=limit, before=before, after=after))
         return self.b("GET", "/me/player/recently-played", params=params)
 
+    @returns(models.DevicesCollection)
+    def devices(self):
+        """
+        Get user's available playback devices
+        """
+        return self.b("GET", "/me/player/devices")
+
 
 class Search(RequestBuilder):
     """

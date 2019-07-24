@@ -569,6 +569,12 @@ class Player(ApiModule):
             models.PlayHistoryPaging,
         )
 
+    def devices(self) -> models.DevicesCollection:
+        """
+        Get user's available playback devices
+        """
+        return self._make_request(self.b.devices(), models.DevicesCollection)
+
 
 class AsyncPlayer(AsyncApiModule):
     __builder_class__ = builders.Player
@@ -645,6 +651,14 @@ class AsyncPlayer(AsyncApiModule):
         return await self._make_request(
             self.b.recently_played(limit=limit, before=before, after=after),
             models.PlayHistoryPaging,
+        )
+
+    async def devices(self) -> models.DevicesCollection:
+        """
+        Get user's available playback devices
+        """
+        return await self._make_request(
+            self.b.devices(), models.DevicesCollection
         )
 
 
