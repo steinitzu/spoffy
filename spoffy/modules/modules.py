@@ -32,6 +32,8 @@ class Artists(ApiModule):
         artist_id: str,
         include_groups: Sequence[str] = None,
         market: str = None,
+        limit: int = None,
+        offset: int = None,
     ) -> models.AlbumSimplePaging:
         """
         Get all artist's albums
@@ -45,6 +47,8 @@ class Artists(ApiModule):
                 artist_id=artist_id,
                 include_groups=include_groups,
                 market=market,
+                limit=limit,
+                offset=offset,
             ),
             models.AlbumSimplePaging,
         )
@@ -89,6 +93,8 @@ class AsyncArtists(AsyncApiModule):
         artist_id: str,
         include_groups: Sequence[str] = None,
         market: str = None,
+        limit: int = None,
+        offset: int = None,
     ) -> models.AlbumSimplePaging:
         """
         Get all artist's albums
@@ -102,6 +108,8 @@ class AsyncArtists(AsyncApiModule):
                 artist_id=artist_id,
                 include_groups=include_groups,
                 market=market,
+                limit=limit,
+                offset=offset,
             ),
             models.AlbumSimplePaging,
         )

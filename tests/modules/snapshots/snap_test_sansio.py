@@ -9,7 +9,7 @@ snapshots = Snapshot()
 
 snapshots['test_Artists_artist 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/artists/abcdefg', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
 
-snapshots['test_Artists_artist_albums 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/artists/abcdefg/albums?include_groups=a%2Cb%2Cc%2Cd%2Ce%2Cf%2Cg&market=abcdefg', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
+snapshots['test_Artists_artist_albums 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/artists/abcdefg/albums?include_groups=a%2Cb%2Cc%2Cd%2Ce%2Cf%2Cg&market=abcdefg&limit=50&offset=50', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
 
 snapshots['test_Auth_get_token_from_client_credentials 1'] = "<Request(method='POST', url='https://accounts.spotify.com/api/token?grant_type=client_credentials', body=None, headers={'Authorization': 'Basic ZmFrZV9jbGllbnRfaWQ6ZmFrZV9jbGllbnRfc2VjcmV0', 'Content-Type': 'application/x-www-form-urlencoded'})>"
 

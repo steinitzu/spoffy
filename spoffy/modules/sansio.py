@@ -47,6 +47,8 @@ class Artists(RequestBuilder):
         artist_id: str,
         include_groups: Sequence[str] = None,
         market: str = None,
+        limit: int = None,
+        offset: int = None,
     ) -> Request:
         """
         Get all artist's albums
@@ -55,11 +57,15 @@ class Artists(RequestBuilder):
         :param include_groups:
         :param market:
         """
-        params = {}
+        params: Dict[str, Any] = {}
         if include_groups:
             params["include_groups"] = ",".join(include_groups)
         if market is not None:
             params["market"] = market
+        if limit is not None:
+            params["limit"] = limit
+        if offset is not None:
+            params["offset"] = offset
         return self.b(
             method="GET",
             url="/artists/{}/albums".format(artist_id),
