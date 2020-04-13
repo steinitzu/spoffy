@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "spoffy"
-version = "0.5.0"
+version = "0.6.0"
 description = "Spotify API client with async and sync support"
 authors = ["Steinthor Palsson <steini90@gmail.com>"]
 readme = 'README.md'
