@@ -38,6 +38,14 @@ current_module = sys.modules[__name__]
 
 
 def make_args(method):
+    if method.__name__ == "remove_tracks_from_playlist":
+        return dict(
+            playlist_id="abcdefg",
+            tracks=[dict(uri="xxx", positions=[1, 2])],
+            snapshot_id="fakesnapshot",
+        )
+    elif method.__name__ == "upload_cover_image":
+        return dict(playlist_id="abcdefg", f=b"fakefilestring")
     sig = inspect.signature(method)
     kwargs: Dict[str, Any] = {}
     for name, param in sig.parameters.items():
@@ -60,7 +68,6 @@ def make_args(method):
             content_type = anno.__args__[0]
             if content_type == str:
                 kwargs[name] = ["a", "b", "c", "d", "e", "f", "g"]
-
     return kwargs
 
 

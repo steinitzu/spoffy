@@ -1,5 +1,5 @@
 from base64 import b64encode
-from typing import Sequence, Optional, Dict, Union, Any
+from typing import Sequence, Optional, Dict, Union, Any, IO
 
 from spoffy.sansio import Request
 from spoffy.client.common import ClientCommon
@@ -155,6 +155,27 @@ class Playlists(RequestBuilder):
             body=_clear_nones(dict(uris=uris, position=position)),
         )
 
+    @returns(models.PlaylistSnapshotId)
+    def remove_tracks_from_playlist(
+        self,
+        playlist_id: str,
+        tracks: Sequence[Dict[str, Union[str, Sequence[int]]]],
+        snapshot_id: Optional[str] = None,
+    ) -> Request:
+        """
+        Remove tracks from a playlist
+
+        :param playlist_id: Spotify ID of target playlist
+        :param tracks: Iterable of dicts containing track uri
+            and optionally positions.
+        :param snapshot_id: Optional playlist snapshot ID to apply operation to
+        """  # noqa: E501
+        return self.b(
+            "DELETE",
+            f"/playlists/{playlist_id}/tracks",
+            body=_clear_nones(dict(tracks=tracks, snapshot_id=snapshot_id)),
+        )
+
     @returns(models.PlaylistSimplePaging)
     def my_playlists(
         self, limit: Optional[int] = None, offset: Optional[int] = None
@@ -163,6 +184,27 @@ class Playlists(RequestBuilder):
             "GET",
             "/me/playlists",
             params=_clear_nones(dict(limit=limit, offset=offset)),
+        )
+
+    @returns(None)
+    def upload_cover_image(
+        self, playlist_id: str, f: Union[bytes, IO[bytes]]
+    ) -> Request:
+        """
+        Set a new cover image for playlist
+
+        :param f: A jpeg image file as either a file handle or a base64
+             encoded bytestring
+        """
+        if isinstance(f, bytes):
+            data = f
+        else:
+            data = b64encode(f.read())
+        return self.b(
+            "PUT",
+            f"/playlists/{playlist_id}/images",
+            body=data,
+            headers={"Content-Type": "image/jpeg"},
         )
 
 
@@ -609,7 +651,7 @@ class Browse(RequestBuilder):
         seed_tracks: Optional[Sequence[str]] = None,
         seed_genres: Optional[Sequence[str]] = None,
         limit: Optional[int] = None,
-        **audio_features
+        **audio_features,
     ) -> Request:
         """
         :param seed_artists: List of seed artist ids

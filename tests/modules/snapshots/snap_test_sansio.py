@@ -98,3 +98,7 @@ snapshots['test_Follow_unfollow_playlist 1'] = "<Request(method='DELETE', url='h
 snapshots['test_Playlists_my_playlists 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/me/playlists?limit=50&offset=50', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
 
 snapshots['test_Player_devices 1'] = "<Request(method='GET', url='https://api.spotify.com/v1/me/player/devices', body=None, headers={'Authorization': 'Bearer fake_access_token'})>"
+
+snapshots['test_Playlists_remove_tracks_from_playlist 1'] = '<Request(method=\'DELETE\', url=\'https://api.spotify.com/v1/playlists/abcdefg/tracks\', body=b\'{"tracks": [{"uri": "xxx", "positions": [1, 2]}], "snapshot_id": "fakesnapshot"}\', headers={\'Content-Type\': \'application/json; charset=utf-8\', \'Content-Length\': \'80\', \'Authorization\': \'Bearer fake_access_token\'})>'
+
+snapshots['test_Playlists_upload_cover_image 1'] = "<Request(method='PUT', url='https://api.spotify.com/v1/playlists/abcdefg/images', body=b'fakefilestring', headers={'Content-Type': 'image/jpeg', 'Content-Length': '14', 'Authorization': 'Bearer fake_access_token'})>"

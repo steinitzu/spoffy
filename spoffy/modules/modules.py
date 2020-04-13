@@ -1,4 +1,4 @@
-from typing import Sequence, Optional, Dict, Union
+from typing import Sequence, Optional, Dict, Union, IO
 from spoffy import models
 from spoffy.modules.apimodule import ApiModule, AsyncApiModule
 from spoffy.modules import sansio as builders, mixins
@@ -200,12 +200,46 @@ class Playlists(ApiModule):
             models.PlaylistSnapshotId,
         )
 
+    def remove_tracks_from_playlist(
+        self,
+        playlist_id: str,
+        tracks: Sequence[Dict[str, Union[str, Sequence[int]]]],
+        snapshot_id: Optional[str] = None,
+    ) -> models.PlaylistSnapshotId:
+        """
+        Remove tracks from a playlist
+
+        :param playlist_id: Spotify ID of target playlist
+        :param tracks: Iterable of dicts containing track uri
+            and optionally positions.
+        :param snapshot_id: Optional playlist snapshot ID to apply operation to
+        """
+        return self._make_request(
+            self.b.remove_tracks_from_playlist(
+                playlist_id=playlist_id, tracks=tracks, snapshot_id=snapshot_id
+            ),
+            models.PlaylistSnapshotId,
+        )
+
     def my_playlists(
         self, limit: Optional[int] = None, offset: Optional[int] = None
     ) -> models.PlaylistSimplePaging:
         return self._make_request(
             self.b.my_playlists(limit=limit, offset=offset),
             models.PlaylistSimplePaging,
+        )
+
+    def upload_cover_image(
+        self, playlist_id: str, f: Union[bytes, IO[bytes]]
+    ) -> None:
+        """
+        Set a new cover image for playlist
+
+        :param f: A jpeg image file as either a file handle or a base64
+             encoded bytestring
+        """
+        return self._make_request(
+            self.b.upload_cover_image(playlist_id=playlist_id, f=f), None
         )
 
 
@@ -285,12 +319,46 @@ class AsyncPlaylists(AsyncApiModule):
             models.PlaylistSnapshotId,
         )
 
+    async def remove_tracks_from_playlist(
+        self,
+        playlist_id: str,
+        tracks: Sequence[Dict[str, Union[str, Sequence[int]]]],
+        snapshot_id: Optional[str] = None,
+    ) -> models.PlaylistSnapshotId:
+        """
+        Remove tracks from a playlist
+
+        :param playlist_id: Spotify ID of target playlist
+        :param tracks: Iterable of dicts containing track uri
+            and optionally positions.
+        :param snapshot_id: Optional playlist snapshot ID to apply operation to
+        """
+        return await self._make_request(
+            self.b.remove_tracks_from_playlist(
+                playlist_id=playlist_id, tracks=tracks, snapshot_id=snapshot_id
+            ),
+            models.PlaylistSnapshotId,
+        )
+
     async def my_playlists(
         self, limit: Optional[int] = None, offset: Optional[int] = None
     ) -> models.PlaylistSimplePaging:
         return await self._make_request(
             self.b.my_playlists(limit=limit, offset=offset),
             models.PlaylistSimplePaging,
+        )
+
+    async def upload_cover_image(
+        self, playlist_id: str, f: Union[bytes, IO[bytes]]
+    ) -> None:
+        """
+        Set a new cover image for playlist
+
+        :param f: A jpeg image file as either a file handle or a base64
+             encoded bytestring
+        """
+        return await self._make_request(
+            self.b.upload_cover_image(playlist_id=playlist_id, f=f), None
         )
 
 
