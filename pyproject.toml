@@ -25,11 +25,15 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.9"
 urlobject = "^2"
 typing-extensions = "^4.9.0"
 
-[tool.poetry.dev-dependencies]
+
+[tool.poetry.group.dev.dependencies]
+snapshottest = "^0.6.0"
+pluggy = "^1.4.0"
+types-requests = "^2.31.0.20240125"
 pytest = "^7.0"
 flake8 = "^3.6"
 mypy = "^1"
@@ -43,11 +47,6 @@ requests = "^2.21"
 astor = "^0.7.1"
 pytest-asyncio = "^0.23.4"
 sphinxcontrib-asyncio = "^0.2.0"
-
-[tool.poetry.group.dev.dependencies]
-snapshottest = "^0.6.0"
-pluggy = "^1.4.0"
-types-requests = "^2.31.0.20240125"
 
 [tool.black]
 line-length = 79
