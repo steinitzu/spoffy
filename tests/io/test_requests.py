@@ -12,4 +12,4 @@ def spotify_cc(client_config, skip_if_no_client):
 
 def test__get_artist(spotify_cc):
     result = spotify_cc.artists.artist("3zunDAtRDg7kflREzWAhxl")
-    assert result.name == "Eels"
+    assert result["name"] == "Eels"

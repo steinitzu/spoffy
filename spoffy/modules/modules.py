@@ -1272,7 +1272,7 @@ class Auth(ApiModule, mixins.AuthMixin):
     __builder_class__ = builders.Auth
 
     def get_token_from_client_credentials(
-        self
+        self,
     ) -> models.ClientCredentialsToken:
         """
         Get an authorization token from client credentials
@@ -1345,7 +1345,7 @@ class AsyncAuth(AsyncApiModule, mixins.AuthMixin):
     __builder_class__ = builders.Auth
 
     async def get_token_from_client_credentials(
-        self
+        self,
     ) -> models.ClientCredentialsToken:
         """
         Get an authorization token from client credentials

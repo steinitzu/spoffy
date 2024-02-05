@@ -15,4 +15,4 @@ async def spotify_cc(client_config, skip_if_no_client):
 @pytest.mark.asyncio
 async def test__get_artist(spotify_cc):
     result = await spotify_cc.artists.artist("3zunDAtRDg7kflREzWAhxl")
-    assert result.name == "Eels"
+    assert result["name"] == "Eels"

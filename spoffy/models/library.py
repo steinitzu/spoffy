@@ -1,5 +1,3 @@
-from typing import List
-
 from spoffy.models.core import Track, Album
 from spoffy.models.paging import OffsetPaging
 from spoffy.models.base import SpotifyObject
@@ -10,8 +8,8 @@ class SavedTrack(SpotifyObject):
     track: Track
 
 
-class SavedTracksPaging(OffsetPaging):
-    items: List[SavedTrack]
+class SavedTracksPaging(OffsetPaging[SavedTrack]):
+    pass
 
 
 class SavedAlbum(SpotifyObject):
@@ -19,5 +17,5 @@ class SavedAlbum(SpotifyObject):
     album: Album
 
 
-class SavedAlbumsPaging(OffsetPaging):
-    items: List[SavedAlbum]
+class SavedAlbumsPaging(OffsetPaging[SavedAlbum]):
+    pass

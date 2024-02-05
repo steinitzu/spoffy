@@ -40,7 +40,7 @@ class TestLoad:
     def test__none_target__returns_none(self):
         c = ClientCommon()
 
-        FResponse = namedtuple("Response", ["json"])
+        FResponse = namedtuple("Response", ["json"])  # type: ignore
         resp = FResponse(json=dict(a=1))
 
         assert c.load(resp, None) is None  # type:ignore
@@ -48,7 +48,7 @@ class TestLoad:
     def test__none_data__returns_none(self):
         c = ClientCommon()
 
-        FResponse = namedtuple("Response", ["json"])
+        FResponse = namedtuple("Response", ["json"])  # type: ignore
         resp = FResponse(json=None)
 
         assert c.load(resp, Track) is None  # type:ignore

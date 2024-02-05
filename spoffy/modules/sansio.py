@@ -700,8 +700,8 @@ class Auth(RequestBuilder):
             self.client.token_url,
             params={"grant_type": "client_credentials"},
             headers={
-                "Authorization": _basic_auth_str(  # type: ignore
-                    self.client.client_id, self.client.client_secret
+                "Authorization": _basic_auth_str(
+                    self.client.client_id, self.client.client_secret  # type: ignore
                 ),
                 "Content-Type": "application/x-www-form-urlencoded",
             },
@@ -719,9 +719,9 @@ class Auth(RequestBuilder):
         """
         if refresh_token:
             refresh = refresh_token
-        elif self.client.token and self.client.token.refresh_token:
-            refresh = self.client.token.refresh_token
-        else:
+        elif self.client.token:
+            refresh = self.client.token.get("refresh_token")  # type: ignore
+        if not refresh:
             raise ValueError(
                 "No refresh token passed and no token on instance"
             )
@@ -731,8 +731,8 @@ class Auth(RequestBuilder):
             self.client.token_url,
             params=dict(refresh_token=refresh, grant_type="refresh_token"),
             headers={
-                "Authorization": _basic_auth_str(  # type: ignore
-                    self.client.client_id, self.client.client_secret
+                "Authorization": _basic_auth_str(
+                    self.client.client_id, self.client.client_secret  # type: ignore
                 ),
                 "Content-Type": "application/x-www-form-urlencoded",
             },
@@ -762,8 +762,8 @@ class Auth(RequestBuilder):
             self.client.token_url,
             params=params,
             headers={
-                "Authorization": _basic_auth_str(  # type: ignore
-                    self.client.client_id, self.client.client_secret
+                "Authorization": _basic_auth_str(
+                    self.client.client_id, self.client.client_secret  # type: ignore
                 ),
                 "Content-Type": "application/x-www-form-urlencoded",
             },

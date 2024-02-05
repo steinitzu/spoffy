@@ -19,7 +19,7 @@ class Restrictions(SpotifyObject):
 
 
 class ExternalIds(SpotifyObject):
-    upc: Opt[str] = None
+    upc: Opt[str]
 
 
 class TrackExternalIds(SpotifyObject):
@@ -69,9 +69,9 @@ class TrackSimple(SpotifyObject):
     type: str
     is_local: bool
     uri: str
-    available_markets: Opt[List[str]] = None
-    linked_from: Opt[TrackLink] = None
-    is_playable: Opt[bool] = None
+    available_markets: Opt[List[str]]
+    linked_from: Opt[TrackLink]
+    is_playable: Opt[bool]
 
 
 class AlbumBase(SpotifyObject):
@@ -90,22 +90,18 @@ class AlbumBase(SpotifyObject):
 
 
 class AlbumSimple(AlbumBase):
-    restrictions: Opt[Restrictions] = None
-    available_markets: Opt[List[str]] = None
+    restrictions: Opt[Restrictions]
+    available_markets: Opt[List[str]]
 
 
 class Track(TrackSimple):
-    explicit: bool
     album: AlbumSimple
     popularity: int
     external_ids: TrackExternalIds
-    available_markets: Opt[List[str]] = None
-    linked_from: Opt[TrackLink] = None
-    is_playable: Opt[bool] = None
 
 
-class AlbumTracksPaging(OffsetPaging):
-    items: List[TrackSimple]
+class AlbumTracksPaging(OffsetPaging[TrackSimple]):
+    pass
 
 
 class Album(AlbumBase):
@@ -115,12 +111,12 @@ class Album(AlbumBase):
     label: str
     popularity: int
     tracks: AlbumTracksPaging
-    restrictions: Opt[Restrictions] = None
-    available_markets: Opt[List[str]] = None
+    restrictions: Opt[Restrictions]
+    available_markets: Opt[List[str]]
 
 
-class AlbumSimplePaging(OffsetPaging):
-    items: List[AlbumSimple]
+class AlbumSimplePaging(OffsetPaging[AlbumSimple]):
+    pass
 
 
 class NewAlbumReleases(SpotifyObject):

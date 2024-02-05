@@ -105,7 +105,7 @@ class ClientCommon:
         if self._access_token:
             return self._access_token
         elif self.token:
-            return self.token.access_token
+            return self.token["access_token"]
         return None
 
     @access_token.setter

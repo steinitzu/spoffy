@@ -1,17 +1,19 @@
-from typing import Optional as Opt, List, Any
+from typing import Optional as Opt, List, Generic, TypeVar
 
 from spoffy.models.base import SpotifyObject
 
+TPageItem = TypeVar("TPageItem")
 
-class Paging(SpotifyObject):
+
+class Paging(SpotifyObject, Generic[TPageItem]):
     href: str
     limit: int
     next: Opt[str]
     previous: Opt[str]
-    items: List[Any]
+    items: List[TPageItem]
 
 
-class OffsetPaging(Paging):
+class OffsetPaging(Paging[TPageItem]):
     """
     Offset based paging object
 
@@ -23,13 +25,8 @@ class OffsetPaging(Paging):
     :param previous: URL to previous page (if available)
     """
 
-    # Jedi doesn't support generics, do this for now
-    href: str
-    limit: int
     offset: int
     total: int
-    next: Opt[str]
-    previous: Opt[str]
 
 
 class Cursor(SpotifyObject):
@@ -37,7 +34,7 @@ class Cursor(SpotifyObject):
     before: str
 
 
-class CursorPaging(Paging):
+class CursorPaging(Paging[TPageItem]):
     """
     Cursor based paging object
 
@@ -48,8 +45,4 @@ class CursorPaging(Paging):
     :param previous: URL to previous page (if available)
     """
 
-    href: str
-    limit: int
     cursors: Cursor
-    next: Opt[str] = None
-    previous: Opt[str] = None
