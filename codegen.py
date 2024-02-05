@@ -82,7 +82,7 @@ def signature_to_keywords(method):
 
 
 def build_method_def(
-    method: ast.FunctionDef
+    method: ast.FunctionDef,
 ) -> Tuple[ast.FunctionDef, ast.AsyncFunctionDef]:
     orig = method
     method = deepcopy(method)
@@ -241,6 +241,6 @@ if __name__ == "__main__":
         out_body += classes
         out_tree = ast.Module(out_body)
         source = to_source(out_tree)
-        source = black.format_str(source, line_length=79)
+        source = black.format_str(source, mode=black.Mode(line_length=79))
         output_file.write(source)
         print(source)

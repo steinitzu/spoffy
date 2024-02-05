@@ -44,7 +44,7 @@ sphinx-autodoc-typehints = "^1.6"
 sphinx_rtd_theme = "^0.4.3"
 aiohttp = "^3.9"
 requests = "^2.21"
-astor = "^0.7.1"
+astor = "^0.8"
 pytest-asyncio = "^0.23.4"
 sphinxcontrib-asyncio = "^0.2.0"
 

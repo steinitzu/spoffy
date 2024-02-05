@@ -124,4 +124,4 @@ class ClientCommon:
         data = response.json
         if data is None:
             return None
-        return target(**data)
+        return data
