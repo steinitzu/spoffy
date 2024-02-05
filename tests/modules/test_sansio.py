@@ -1,4 +1,4 @@
-from typing import List, Type, Dict, Any, Sequence
+from typing import List, Type, Dict, Any
 import sys
 import inspect
 
@@ -23,7 +23,7 @@ def client():
     )
 
 
-builders: List[Type[sansio.RequestBuilder]] = list(
+builders: List[Type[sansio.RequestBuilder]] = list(  # type: ignore
     zip(
         *inspect.getmembers(
             sansio,

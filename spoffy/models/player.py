@@ -44,5 +44,5 @@ class PlayHistoryItem(SpotifyObject):
     context: Opt[Context]
 
 
-class PlayHistoryPaging(CursorPaging):
-    items: List[PlayHistoryItem]
+class PlayHistoryPaging(CursorPaging[PlayHistoryItem]):
+    pass

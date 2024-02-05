@@ -1,6 +1,3 @@
-import time
-from typing import Optional as Opt
-
 from spoffy.models.base import SpotifyObject
 
 
@@ -9,13 +6,6 @@ class Token(SpotifyObject):
     token_type: str
     scope: str
     expires_in: int
-    expires_at: int
-    refresh_token: Opt[str] = None
-
-    def __init__(self, **d):
-        super().__init__(**d)
-        if not hasattr(self, "expires_at") or self.expires_at is None:
-            self.expires_at = int(time.time()) + self.expires_in - 1
 
 
 class ClientCredentialsToken(Token):

@@ -2,7 +2,7 @@ from typing import List, Optional as Opt
 
 from spoffy.models.image import Image
 from spoffy.models.users import UserBase
-from spoffy.models.core import Track, TrackLink, ExternalUrls, Followers
+from spoffy.models.core import Track, ExternalUrls, Followers
 from spoffy.models.paging import OffsetPaging
 from spoffy.models.base import SpotifyObject
 
@@ -24,9 +24,7 @@ class VideoThumbnail(SpotifyObject):
 
 
 class PlaylistTrackTrack(Track):
-    available_markets: Opt[List[str]] = None
-    linked_from: Opt[TrackLink] = None
-    is_playable: Opt[bool] = None
+    pass
 
 
 class PlaylistTrack(SpotifyObject):
@@ -36,8 +34,8 @@ class PlaylistTrack(SpotifyObject):
     track: PlaylistTrackTrack
 
 
-class PlaylistTracksPaging(OffsetPaging):
-    items: List[PlaylistTrack]
+class PlaylistTracksPaging(OffsetPaging[PlaylistTrack]):
+    pass
 
 
 class PlaylistBase(SpotifyObject):
@@ -80,8 +78,7 @@ class PlaylistBase(SpotifyObject):
 
 
 class TracksHref(SpotifyObject):
-    """
-    """
+    """ """
 
     href: str
     total: int
@@ -118,8 +115,8 @@ class Playlist(PlaylistBase):
     tracks: PlaylistTracksPaging
 
 
-class PlaylistSimplePaging(OffsetPaging):
-    items: List[PlaylistSimple]
+class PlaylistSimplePaging(OffsetPaging[PlaylistSimple]):
+    pass
 
 
 Playlist.__doc__ += PlaylistBase.__doc__  # type: ignore

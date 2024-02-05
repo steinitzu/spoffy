@@ -87,6 +87,7 @@ class Response:
         )
         try:
             error_info = self.json
+            assert error_info is not None
             if isinstance(error_info["error"], dict):
                 error_info = error_info["error"]
             if "error" in error_info and "message" not in error_info:

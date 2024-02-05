@@ -1,6 +1,5 @@
 # Spoffy
 
-[![CircleCI](https://circleci.com/gh/steinitzu/spoffy/tree/master.svg?style=svg)](https://circleci.com/gh/steinitzu/spoffy/tree/master)
 [![Documentation Status](https://readthedocs.org/projects/spoffy/badge/?version=latest&style=flat-square)](https://spoffy.readthedocs.io/en/latest/?badge=latest)
 
 
@@ -14,7 +13,7 @@ Read the docs: https://spoffy.readthedocs.io
 ```
 pip install spoffy
 ```
-Python3.6 and newer are supported
+Python3.9 and newer are supported
 
 
 

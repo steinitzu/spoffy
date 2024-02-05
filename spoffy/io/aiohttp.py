@@ -47,7 +47,10 @@ class AioHttpClient(AsyncClient):
             headers=request.headers,
         ) as resp:
             response = Response(
-                request, resp.status, resp.headers, await resp.read()
+                request,
+                resp.status,
+                resp.headers,  # type: ignore
+                await resp.read(),
             )
             response.raise_for_status()
             return response

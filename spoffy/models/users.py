@@ -21,7 +21,7 @@ class UserPublic(UserBase):
 
 
 class UserPrivate(UserPublic):
-    birthdate: Opt[str] = None
-    country: Opt[str] = None
-    email: Opt[str] = None
-    product: Opt[str] = None
+    birthdate: Opt[str]
+    country: Opt[str]
+    email: Opt[str]
+    product: Opt[str]

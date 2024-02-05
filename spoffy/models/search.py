@@ -1,25 +1,23 @@
-from typing import List
-
 from spoffy.models.paging import OffsetPaging
 from spoffy.models.core import Artist, Track, AlbumSimple
 from spoffy.models.playlists import PlaylistSimple
 from spoffy.models.base import SpotifyObject
 
 
-class SearchArtistsPaging(OffsetPaging):
-    items: List[Artist]
+class SearchArtistsPaging(OffsetPaging[Artist]):
+    pass
 
 
-class SearchTracksPaging(OffsetPaging):
-    items: List[Track]
+class SearchTracksPaging(OffsetPaging[Track]):
+    pass
 
 
-class SearchAlbumsPaging(OffsetPaging):
-    items: List[AlbumSimple]
+class SearchAlbumsPaging(OffsetPaging[AlbumSimple]):
+    pass
 
 
-class SearchPlaylistsPaging(OffsetPaging):
-    items: List[PlaylistSimple]
+class SearchPlaylistsPaging(OffsetPaging[PlaylistSimple]):
+    pass
 
 
 class SearchResults(SpotifyObject):

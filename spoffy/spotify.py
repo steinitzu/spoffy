@@ -2,6 +2,7 @@ from typing import TypeVar
 
 from spoffy.client.base import AsyncClient, SyncClient
 from spoffy.util import get_page_url
+from spoffy.models.base import SpotifyObject
 
 from spoffy.modules.modules import (
     Auth,
@@ -29,7 +30,7 @@ from spoffy.modules.modules import (
 )
 
 
-TPage = TypeVar("TPage")
+TPage = TypeVar("TPage", bound=SpotifyObject)
 
 
 class AsyncSpotify:
