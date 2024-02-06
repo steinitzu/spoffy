@@ -136,33 +136,30 @@ def add_extras(klass: ast.ClassDef):
         (
             "authorize_user",
             "get_token_from_code",
-            "token",
             _doc_authorize_user,
         ),
         (
             "authorize_client",
             "get_token_from_client_credentials",
-            "token",
             _doc_authorize_client,
         ),
         (
             "refresh_authorization",
             "get_token_from_refresh_token",
-            "token",
             _doc_refresh_authorization,
         ),
     ]
-    tmpl = 'self._assign_result("token", self.method_name())'
-    for methname, mirroredname, assignto, docstring in assign_methods:
+    tmpl = "self._assign_token(self.method_name())"
+    for methname, mirroredname, docstring in assign_methods:
         mirrored = find_method(klass, mirroredname)
         meth = deepcopy(mirrored)
         meth.name = methname
         keywords = signature_to_keywords(mirrored)
         assignment = ast.parse(tmpl).body[0]
 
-        assignment.value.args[0].s = assignto  # type: ignore
-        assignment.value.args[1].func.attr = mirrored.name  # type: ignore
-        assignment.value.args[1].keywords = keywords  # type: ignore
+        # assignment.value.args[0].s = assignto  # type: ignore
+        assignment.value.args[0].func.attr = mirrored.name  # type: ignore
+        assignment.value.args[0].keywords = keywords  # type: ignore
         if isinstance(meth, ast.AsyncFunctionDef):
             assignment = ast.Expr(ast.Await(assignment.value))  # type: ignore
 

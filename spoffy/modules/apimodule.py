@@ -1,5 +1,6 @@
 from abc import abstractmethod
 from typing import TypeVar, Awaitable, Any
+import time
 
 from spoffy.sansio import Request
 from spoffy.client.base import AsyncClient, SyncClient
@@ -16,8 +17,10 @@ class AsyncApiModule:
     async def _make_request(self, req: Request, target):
         return self.client.load(await self.client.request(req), target)
 
-    async def _assign_result(self, attribute: str, response: Awaitable):
-        setattr(self.client, attribute, await response)
+    async def _assign_token(self, response: Awaitable):
+        token = await response
+        token["expires_at"] = int(time.time() + token["expires_in"])
+        self.client.token = token
 
     @property
     @abstractmethod
@@ -33,8 +36,10 @@ class ApiModule:
     def _make_request(self, req: Request, target):
         return self.client.load(self.client.request(req), target)
 
-    def _assign_result(self, attribute: str, response: Any):
-        setattr(self.client, attribute, response)
+    def _assign_token(self, response: Any):
+        token = response
+        token["expires_at"] = int(time.time() + token["expires_in"])
+        self.client.token = token
 
     @property
     @abstractmethod

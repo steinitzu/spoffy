@@ -1318,9 +1318,8 @@ class Auth(ApiModule, mixins.AuthMixin):
         Authorize this API instance using a response code
         from oauth login
         """
-        self._assign_result(
-            "token",
-            self.get_token_from_code(response_code=response_code, **kwargs),
+        self._assign_token(
+            self.get_token_from_code(response_code=response_code, **kwargs)
         )
 
     def authorize_client(self):
@@ -1328,16 +1327,15 @@ class Auth(ApiModule, mixins.AuthMixin):
         Authorize this API instance using
         its client ID and client Secret
         """
-        self._assign_result("token", self.get_token_from_client_credentials())
+        self._assign_token(self.get_token_from_client_credentials())
 
     def refresh_authorization(self, refresh_token: str = None):
         """
         :param refresh_token: Optional refresh token to use
             instead of the token stored on this instance
         """
-        self._assign_result(
-            "token",
-            self.get_token_from_refresh_token(refresh_token=refresh_token),
+        self._assign_token(
+            self.get_token_from_refresh_token(refresh_token=refresh_token)
         )
 
 
@@ -1391,9 +1389,8 @@ class AsyncAuth(AsyncApiModule, mixins.AuthMixin):
         Authorize this API instance using a response code
         from oauth login
         """
-        await self._assign_result(
-            "token",
-            self.get_token_from_code(response_code=response_code, **kwargs),
+        await self._assign_token(
+            self.get_token_from_code(response_code=response_code, **kwargs)
         )
 
     async def authorize_client(self):
@@ -1401,16 +1398,13 @@ class AsyncAuth(AsyncApiModule, mixins.AuthMixin):
         Authorize this API instance using
         its client ID and client Secret
         """
-        await self._assign_result(
-            "token", self.get_token_from_client_credentials()
-        )
+        await self._assign_token(self.get_token_from_client_credentials())
 
     async def refresh_authorization(self, refresh_token: str = None):
         """
         :param refresh_token: Optional refresh token to use
             instead of the token stored on this instance
         """
-        await self._assign_result(
-            "token",
-            self.get_token_from_refresh_token(refresh_token=refresh_token),
+        await self._assign_token(
+            self.get_token_from_refresh_token(refresh_token=refresh_token)
         )

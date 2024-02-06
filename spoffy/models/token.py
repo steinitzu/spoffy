@@ -6,6 +6,7 @@ class Token(SpotifyObject):
     token_type: str
     scope: str
     expires_in: int
+    expires_at: int
 
 
 class ClientCredentialsToken(Token):
