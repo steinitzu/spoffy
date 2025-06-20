@@ -2,7 +2,7 @@ import time
 
 import pytest
 
-from httpx import AsyncClient, HTTPStatusError
+from httpx import AsyncClient
 from spoffy.io.httpx import make_spotify
 
 

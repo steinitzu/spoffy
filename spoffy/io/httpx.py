@@ -12,7 +12,7 @@ class AsyncHttpXClient(AsyncClient):
     """
     Client implementation using httpx as a http backend
 
-    :param session: A :class:`~requests.Session` object
+    :param session: A :class:`~httpx.AsyncClient` objects
     """
 
     def __init__(
@@ -63,7 +63,7 @@ def make_spotify(
 ) -> AsyncSpotify:
     """
     Convenience factory to build
-    Spotify API wrapper using the requests http library.
+    Async Spotify API wrapper using the httpx http library.
     Accepts all arguments of :class:`~HttpXClient`
     """
     return AsyncSpotify(
