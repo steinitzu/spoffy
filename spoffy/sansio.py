@@ -20,6 +20,8 @@ class Request:
     :param access_token: Will be added to Authorization header
     """
 
+    body: Optional[bytes] = None
+
     def __init__(
         self,
         method: str,
@@ -32,13 +34,10 @@ class Request:
         self.method = method
         self.url = str(URLObject(url).add_query_params(**(params or {})))
         self.headers = dict(headers or {})
-        self.body = body
         if body is not None and isinstance(body, MutableMapping):
             charset = "utf-8"
             self.body = json.dumps(body).encode(charset)
-            self.headers[
-                "Content-Type"
-            ] = f"application/json; charset={charset}"
+            self.headers["Content-Type"] = f"application/json; charset={charset}"
             self.headers["Content-Length"] = str(len(self.body))
         elif body is not None and isinstance(body, bytes):
             self.body = body
